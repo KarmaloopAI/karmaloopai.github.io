@@ -1,8 +1,169 @@
 <!DOCTYPE html>
-<html>
-    <title>Karmaloop AI - The home of Autonomous AI Agents</title>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Jiva - AI Autonomous Agent Framework for Open Source LLMs by Karmaloop AI">
+    <meta name="author" content="Karmaloop AI">
+    <title>Jiva by Karmaloop AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background: #121212;
+            color: #ffffff;
+            scroll-behavior: smooth;
+        }
+        header {
+            background: #0a0a0a;
+            padding: 20px 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #1f1f1f;
+        }
+        header img {
+            height: 50px;
+        }
+        .hero-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            text-align: center;
+            text-shadow: #5750d8 1px 12px 20px;
+        }
+        .hero-section h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        .hero-section p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.8;
+        }
+        .button { position: relative; top: 0px;
+            margin-top: 40px;
+            padding: 15px 30px;
+            background: #6c63ff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            transition: background 0.3s ease;
+        }
+        .button:hover {
+            background: #5750d8;
+        }
+        .features-section {
+            padding: 60px 20px;
+            text-align: center;
+        }
+        .features-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+        }
+        .features-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .feature-card {
+            background: #1e1e1e;
+            border: 1px solid #333;
+            border-radius: 10px;
+            width: 300px;
+            margin: 20px;
+            padding: 30px;
+            transition: transform 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        .feature-card p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        footer {
+            background: #0a0a0a;
+            padding: 40px;
+            text-align: center;
+            border-top: 2px solid #1f1f1f;
+            margin-top: 60px;
+        }
+        footer p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+    </style>
+
+    <meta name="robots" content="index, follow">
+    <meta name="keywords" content="AI, Autonomous Agents, Open Source, LLM, AI Framework, Karmaloop AI, Jiva">
+    <meta name="author" content="Karmaloop AI">
+</head>
 <body>
-<h1>Karmaloop AI</h1>
-<p>The home of Autonomous AI Agents</p>
+    <!-- Header Section -->
+    <header>
+        <img src="LogoTransparent.svg" alt="Karmaloop AI Logo">
+        <nav>
+            <a href="#features" class="button">Explore Features</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section" style="background-image: url('DALL·E 2024-09-27 22.46.53 - Create a simple and subtle 3D animated-style image of a futuristic humanoid robot with a minimalistic design. The robot should have smooth white surfa.webp'); background-size: cover; background-position: center;">
+        <div>
+            <h1>Welcome to the Future of AI Autonomous Agents</h1>
+            <p>
+                Jiva, by Karmaloop AI, is an innovative open-source framework designed to power autonomous AI agents with advanced temporal awareness, ethical decision-making, and memory systems. Experience the power of open-source AI running on state-of-the-art LLMs.
+            </p>
+            <a href="https://github.com/KarmaloopAI/Jiva" class="button" style="top: 50px;">Get Started on GitHub</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features-section">
+        <h2>Jiva's Key Features</h2>
+        <div class="features-container">
+            <div class="feature-card">
+                <h3>Temporal Awareness</h3>
+                <p>Jiva operates on a day/night cycle, allowing for a more human-like perception of time.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Memory Systems</h3>
+                <p>Utilizes both short-term and long-term memory, powered by vector databases for efficient storage and retrieval.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Ethical Decision-Making</h3>
+                <p>Incorporates ethical principles into decision-making processes, ensuring responsible AI behavior.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Task Management</h3>
+                <p>Autonomously generates, prioritizes, and executes tasks to achieve given goals.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Adaptive Learning</h3>
+                <p>Engages in cyclical learning and refinement of knowledge through regular "sleep" cycles.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Sensor Integration</h3>
+                <p>Modular design allows for easy integration of various input sensors. Supports only human-input as of now.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 Karmaloop AI. All Rights Reserved. | <a href="https://github.com/KarmaloopAI/Jiva" style="color: #6c63ff;">View on GitHub</a></p>
+    </footer>
 </body>
 </html>
