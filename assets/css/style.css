@@ -19,7 +19,7 @@
 body, html {
     margin: 0;
     padding: 0;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Quicksand', sans-serif;
     background: var(--secondary-color);
     color: var(--text-color);
     scroll-behavior: smooth;
@@ -47,6 +47,7 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
     font-size: 3rem;
     margin-bottom: 20px;
+    text-shadow: 0 0 15px var(--primary-color), 0 0 10px var(--primary-color);
 }
 
 h2 {
@@ -207,6 +208,7 @@ nav ul li a:hover {
 .button.secondary {
     background: transparent;
     border: 2px solid var(--primary-color);
+    text-shadow: 0 0 10px var(--primary-color), 0 0 5px var(--primary-color);
 }
 
 .button.secondary:hover {
