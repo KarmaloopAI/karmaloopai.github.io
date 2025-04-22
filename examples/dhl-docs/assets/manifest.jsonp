@@ -1,0 +1,565 @@
+window.loadDocumentationManifest({
+  "name": "z_locked_users_report",
+  "root_path": "/Users/abidev/dev/z_locked_users_report",
+  "primary_language": "Unknown",
+  "frameworks": [
+    "YAML configuration",
+    "ABAP Object Services",
+    "ALV (ABAP List Viewer)"
+  ],
+  "files": {
+    "fluen_config.yml": {
+      "path": "fluen_config.yml",
+      "language": "Unknown",
+      "purpose": "This configuration file is used to define settings for an application that likely interacts with OpenAI's GPT-4 model. It sets various application parameters, including caching, API interactions, and output management.",
+      "exposures": [
+        {
+          "name": "cache_dir",
+          "type": "exposure",
+          "file_path": "fluen_config.yml",
+          "line_number": 0,
+          "scope": null,
+          "purpose": null,
+          "documentation": null
+        },
+        {
+          "name": "default_export_type",
+          "type": "exposure",
+          "file_path": "fluen_config.yml",
+          "line_number": 0,
+          "scope": null,
+          "purpose": null,
+          "documentation": null
+        },
+        {
+          "name": "llm:max_retries",
+          "type": "exposure",
+          "file_path": "fluen_config.yml",
+          "line_number": 0,
+          "scope": null,
+          "purpose": null,
+          "documentation": null
+        },
+        {
+          "name": "llm:model",
+          "type": "exposure",
+          "file_path": "fluen_config.yml",
+          "line_number": 0,
+          "scope": null,
+          "purpose": null,
+          "documentation": null
+        },
+        {
+          "name": "llm:provider",
+          "type": "exposure",
+          "file_path": "fluen_config.yml",
+          "line_number": 0,
+          "scope": null,
+          "purpose": null,
+          "documentation": null
+        },
+        {
+          "name": "llm:timeout",
+          "type": "exposure",
+          "file_path": "fluen_config.yml",
+          "line_number": 0,
+          "scope": null,
+          "purpose": null,
+          "documentation": null
+        },
+        {
+          "name": "llm:api_key",
+          "type": "exposure",
+          "file_path": "fluen_config.yml",
+          "line_number": 0,
+          "scope": null,
+          "purpose": null,
+          "documentation": null
+        },
+        {
+          "name": "output_dir",
+          "type": "exposure",
+          "file_path": "fluen_config.yml",
+          "line_number": 0,
+          "scope": null,
+          "purpose": null,
+          "documentation": null
+        },
+        {
+          "name": "temp_dir",
+          "type": "exposure",
+          "file_path": "fluen_config.yml",
+          "line_number": 0,
+          "scope": null,
+          "purpose": null,
+          "documentation": null
+        }
+      ],
+      "dependencies": [
+        {
+          "name": "OpenAI GPT-4 API",
+          "type": "external",
+          "version": null,
+          "used_by": null
+        }
+      ],
+      "elements": [
+        {
+          "name": "cache_dir",
+          "type": "variable",
+          "file_path": "fluen_config.yml",
+          "line_number": 1,
+          "scope": "global",
+          "purpose": "Defines the directory where the application will store cache files.",
+          "documentation": "This variable specifies the path '.fluen/cache' for caching application data."
+        },
+        {
+          "name": "default_export_type",
+          "type": "variable",
+          "file_path": "fluen_config.yml",
+          "line_number": 2,
+          "scope": "global",
+          "purpose": "Sets the default format for exporting data or results.",
+          "documentation": "The value 'html' indicates outputs will be exported in HTML format."
+        },
+        {
+          "name": "llm:max_retries",
+          "type": "variable",
+          "file_path": "fluen_config.yml",
+          "line_number": 3,
+          "scope": "llm configuration",
+          "purpose": "Specifies the maximum number of retry attempts for llm requests.",
+          "documentation": "This setting is used to configure the retry logic for API requests, set to a value of 3."
+        },
+        {
+          "name": "llm:model",
+          "type": "variable",
+          "file_path": "fluen_config.yml",
+          "line_number": 4,
+          "scope": "llm configuration",
+          "purpose": "Specifies the language model version to use.",
+          "documentation": "The configuration uses the 'gpt-4o' model under OpenAI's offerings."
+        },
+        {
+          "name": "llm:provider",
+          "type": "variable",
+          "file_path": "fluen_config.yml",
+          "line_number": 5,
+          "scope": "llm configuration",
+          "purpose": "Indicates the service provider for the language model.",
+          "documentation": "The service provider is 'openai', reflecting the use of OpenAI services."
+        },
+        {
+          "name": "llm:timeout",
+          "type": "variable",
+          "file_path": "fluen_config.yml",
+          "line_number": 6,
+          "scope": "llm configuration",
+          "purpose": "Sets the timeout duration for llm requests.",
+          "documentation": "Timeout is set to 60 seconds for API calls to prevent indefinite waiting."
+        },
+        {
+          "name": "llm:api_key",
+          "type": "variable",
+          "file_path": "fluen_config.yml",
+          "line_number": 7,
+          "scope": "llm configuration",
+          "purpose": "Provides authentication for accessing the API.",
+          "documentation": "An API key is provided to authenticate requests with the OpenAI service."
+        },
+        {
+          "name": "output_dir",
+          "type": "variable",
+          "file_path": "fluen_config.yml",
+          "line_number": 8,
+          "scope": "global",
+          "purpose": "Defines where outputs will be stored.",
+          "documentation": "The directory 'docs' is used to store outputs created by the application."
+        },
+        {
+          "name": "temp_dir",
+          "type": "variable",
+          "file_path": "fluen_config.yml",
+          "line_number": 9,
+          "scope": "global",
+          "purpose": "Indicates where temporary files are stored.",
+          "documentation": "Temporary files are stored in the '.fluen/temp' directory."
+        }
+      ],
+      "framework_hints": [
+        "YAML configuration"
+      ],
+      "last_modified": "2025-04-22T14:50:48.211108",
+      "relationships": {
+        "dependencies": [],
+        "dependents": [],
+        "imports": [
+          "OpenAI GPT-4 API"
+        ],
+        "imported_by": []
+      }
+    },
+    "Z_LOCKED_USERS.abap": {
+      "path": "Z_LOCKED_USERS.abap",
+      "language": "Unknown",
+      "purpose": "This code is an ABAP report that displays a list of locked or unlocked users based on the user's selection and allows navigation to transaction SU01 for user maintenance.",
+      "exposures": [],
+      "dependencies": [
+        {
+          "name": "cl_salv_table",
+          "type": "external",
+          "version": null,
+          "used_by": null
+        },
+        {
+          "name": "cl_salv_events_table",
+          "type": "external",
+          "version": null,
+          "used_by": null
+        },
+        {
+          "name": "cl_salv_columns_table",
+          "type": "external",
+          "version": null,
+          "used_by": null
+        },
+        {
+          "name": "if_salv_c_cell_type",
+          "type": "external",
+          "version": null,
+          "used_by": null
+        },
+        {
+          "name": "cx_salv_msg",
+          "type": "external",
+          "version": null,
+          "used_by": null
+        },
+        {
+          "name": "cx_salv_not_found",
+          "type": "external",
+          "version": null,
+          "used_by": null
+        }
+      ],
+      "elements": [
+        {
+          "name": "z_locked_users",
+          "type": "report",
+          "file_path": "Z_LOCKED_USERS.abap",
+          "line_number": 8,
+          "scope": "global",
+          "purpose": "Main program for reporting locked/unlocked users.",
+          "documentation": "Standard ABAP report header used for defining the report name."
+        },
+        {
+          "name": "usr02",
+          "type": "table",
+          "file_path": "Z_LOCKED_USERS.abap",
+          "line_number": 10,
+          "scope": "global",
+          "purpose": "ABAP table used to store user data, specifically for user information in the system.",
+          "documentation": "Tables statement used to declare the SAP standard table USR02 for fetching user data."
+        },
+        {
+          "name": "ty_user",
+          "type": "type",
+          "file_path": "Z_LOCKED_USERS.abap",
+          "line_number": 12,
+          "scope": "global",
+          "purpose": "Structure used to define the layout of user data.",
+          "documentation": "Data type definition for storing individual user information with fields bname (username), erdat (creation date), and uflag (user flag status indicating locked or unlocked)."
+        },
+        {
+          "name": "gt_user",
+          "type": "variable",
+          "file_path": "Z_LOCKED_USERS.abap",
+          "line_number": 19,
+          "scope": "global",
+          "purpose": "Internal table for storing user data fetched from database based on selection screen input.",
+          "documentation": "Data declaration for an internal table holding multiple user entries."
+        },
+        {
+          "name": "gs_user",
+          "type": "variable",
+          "file_path": "Z_LOCKED_USERS.abap",
+          "line_number": 20,
+          "scope": "global",
+          "purpose": "Work area for individual user records during table operations.",
+          "documentation": "Data declaration for a work area used to process single user entries within gt_user."
+        },
+        {
+          "name": "lcl_alv_handler",
+          "type": "class",
+          "file_path": "Z_LOCKED_USERS.abap",
+          "line_number": 23,
+          "scope": "local",
+          "purpose": "Local class that functions as an event handler for ALV grid row click events.",
+          "documentation": "Defines methods to handle click events, specifically navigating to transaction SU01 for the clicked user."
+        },
+        {
+          "name": "on_line_click",
+          "type": "method",
+          "file_path": "Z_LOCKED_USERS.abap",
+          "line_number": 27,
+          "scope": "local",
+          "purpose": "Handles click events on the ALV grid to navigate to user maintenance (SU01).",
+          "documentation": "Reads selected row data to set the user parameter and initiates a call to transaction SU01 with that parameter."
+        },
+        {
+          "name": "SELECTION-SCREEN BLOCK",
+          "type": "selection-screen element",
+          "file_path": "Z_LOCKED_USERS.abap",
+          "line_number": 34,
+          "scope": "global",
+          "purpose": "Defines the user interface for selecting reporting criteria.",
+          "documentation": "Group of screen elements allowing user to select locked or unlocked users through radio buttons."
+        },
+        {
+          "name": "p_lock",
+          "type": "selection-screen parameter",
+          "file_path": "Z_LOCKED_USERS.abap",
+          "line_number": 35,
+          "scope": "global",
+          "purpose": "Radio button for selecting locked users.",
+          "documentation": "Parameter for user input to signify the report should list locked users."
+        },
+        {
+          "name": "p_nlock",
+          "type": "selection-screen parameter",
+          "file_path": "Z_LOCKED_USERS.abap",
+          "line_number": 36,
+          "scope": "global",
+          "purpose": "Radio button for selecting unlocked users.",
+          "documentation": "Parameter for user input to signify the report should list unlocked users."
+        },
+        {
+          "name": "get_data",
+          "type": "form",
+          "file_path": "Z_LOCKED_USERS.abap",
+          "line_number": 42,
+          "scope": "local",
+          "purpose": "Retrieves user data based on selected criteria from the selection screen.",
+          "documentation": "ABAP form routine that selects users from USR02 table based on their lock status (uflag)."
+        },
+        {
+          "name": "display_data",
+          "type": "form",
+          "file_path": "Z_LOCKED_USERS.abap",
+          "line_number": 54,
+          "scope": "local",
+          "purpose": "Displays the fetched user data in an ALV grid.",
+          "documentation": "Sets up ALV grid with event handlers and displays the user data, allowing interaction."
+        },
+        {
+          "name": "lv_heading",
+          "type": "variable",
+          "file_path": "Z_LOCKED_USERS.abap",
+          "line_number": 68,
+          "scope": "local",
+          "purpose": "Stores the header text for the ALV grid.",
+          "documentation": "Dynamic header for ALV grid based on the count and selection of locked or unlocked users."
+        },
+        {
+          "name": "lv_count",
+          "type": "variable",
+          "file_path": "Z_LOCKED_USERS.abap",
+          "line_number": 69,
+          "scope": "local",
+          "purpose": "Stores the number of lines in the internal table gt_user.",
+          "documentation": "Describes and holds the number of users matching the selected criteria."
+        }
+      ],
+      "framework_hints": [
+        "ABAP Object Services",
+        "ALV (ABAP List Viewer)"
+      ],
+      "last_modified": "2025-04-22T14:50:48.211269",
+      "relationships": {
+        "dependencies": [],
+        "dependents": [],
+        "imports": [
+          "cl_salv_table",
+          "cl_salv_events_table",
+          "cl_salv_columns_table",
+          "if_salv_c_cell_type",
+          "cx_salv_msg",
+          "cx_salv_not_found"
+        ],
+        "imported_by": []
+      }
+    }
+  },
+  "dependencies": {
+    "OpenAI GPT-4 API": {
+      "name": "OpenAI GPT-4 API",
+      "type": "external",
+      "version": null,
+      "used_by": null
+    },
+    "cl_salv_table": {
+      "name": "cl_salv_table",
+      "type": "external",
+      "version": null,
+      "used_by": null
+    },
+    "cl_salv_events_table": {
+      "name": "cl_salv_events_table",
+      "type": "external",
+      "version": null,
+      "used_by": null
+    },
+    "cl_salv_columns_table": {
+      "name": "cl_salv_columns_table",
+      "type": "external",
+      "version": null,
+      "used_by": null
+    },
+    "if_salv_c_cell_type": {
+      "name": "if_salv_c_cell_type",
+      "type": "external",
+      "version": null,
+      "used_by": null
+    },
+    "cx_salv_msg": {
+      "name": "cx_salv_msg",
+      "type": "external",
+      "version": null,
+      "used_by": null
+    },
+    "cx_salv_not_found": {
+      "name": "cx_salv_not_found",
+      "type": "external",
+      "version": null,
+      "used_by": null
+    }
+  },
+  "last_updated": "2025-04-22T14:50:58.234571",
+  "git_commit": "0c3f386d347f3a1fc1a0e13e9a2bf2239ae29ae2",
+  "project_insights": {
+    "overview": "The **z_locked_users_report** project is an application implemented using a combination of YAML configuration files and ABAP Object Services, designed primarily to manage and report on the status of user accounts \u2014 specifically, those that are locked or unlocked. This project leverages the power of SAP's ALV (ABAP List Viewer) for a user-friendly interface, facilitating administrative tasks related to user management in SAP systems. Additionally, it incorporates the OpenAI GPT-4 API to enhance its functionalities, suggesting a potential integration of AI-driven capabilities for extended analysis and reporting features.",
+    "key_features": [
+      {
+        "name": "User Lock Status Report",
+        "description": "Displays a list of locked or unlocked users based on a selection entered by the user. This is executed through an ABAP report, providing a straightforward interface for viewing user status directly within the SAP environment.",
+        "category": "Core",
+        "status": "Implemented"
+      },
+      {
+        "name": "GPT-4 Interaction",
+        "description": "Integrates with the OpenAI GPT-4 API to enhance application functionality potentially involving advanced data processing and AI-driven insights or recommendations, providing a modern edge to traditional SAP reporting.",
+        "category": "Integration",
+        "status": "Planned"
+      },
+      {
+        "name": "User Navigation",
+        "description": "Facilitates seamless navigation to the SU01 transaction code for user maintenance directly from the report interface, enabling a more integrated user management experience within SAP.",
+        "category": "UI",
+        "status": "Implemented"
+      },
+      {
+        "name": "Configuration Management",
+        "description": "Utilizes a YAML configuration file to manage and define settings concerning API interactions, caching, and output management, ensuring a customizable and efficient reporting process.",
+        "category": "Core",
+        "status": "Implemented"
+      }
+    ],
+    "architecture": {
+      "summary": "The **z_locked_users_report** project is structured around SAP's ABAP programming runtime environment and a configuration management system based on YAML. It involves various components to manage and present data about user account statuses. The architecture is designed to integrate seamlessly with external services such as the OpenAI GPT-4 API, emphasizing both interaction through configuration and data presentation via SAP's ALV (ABAP List Viewer) framework.",
+      "design_patterns": [
+        {
+          "name": "Model-View-Controller (MVC)",
+          "purpose": "Separates data handling (Model), user interaction (View), and application logic (Controller) to improve modularity and maintainability.",
+          "location": "The `Z_LOCKED_USERS.abap` file represents the Model and Controller that handle data retrieval and logical operations. The ALV framework acts as the View by rendering the data display."
+        }
+      ],
+      "primary_components": [
+        {
+          "name": "YAML Configuration Module",
+          "responsibility": "Handles configuration settings for the application, particularly in relation to API interactions and application behavior.",
+          "dependencies": [
+            "OpenAI GPT-4 API"
+          ],
+          "key_files": [
+            "fluen_config.yml"
+          ]
+        },
+        {
+          "name": "User Management Report Module",
+          "responsibility": "Generates reports on user lock statuses and facilitates navigation to user administration.",
+          "dependencies": [
+            "cl_salv_table",
+            "cl_salv_events_table",
+            "cl_salv_columns_table",
+            "if_salv_c_cell_type",
+            "cx_salv_msg",
+            "cx_salv_not_found"
+          ],
+          "key_files": [
+            "Z_LOCKED_USERS.abap"
+          ]
+        }
+      ],
+      "data_flow": {
+        "description": "Data flows from configuration files defining operational parameters to ABAP reports that process and display user lock status data. The report uses the ALV framework to dynamically render this data and provides interaction capabilities for further user management.",
+        "key_processes": [
+          "Configuration loading and parsing from `fluen_config.yml`.",
+          "User status data retrieval and processing via ABAP code.",
+          "Presentation of data using ALV for user interactions.",
+          "Navigation to transaction SU01 for user management actions."
+        ]
+      }
+    },
+    "tech_stack": {
+      "languages": [
+        {
+          "name": "ABAP",
+          "purpose": "Used to create reports and interact with SAP environments",
+          "key_features_used": [
+            "ALV (ABAP List Viewer)",
+            "Object Oriented ABAP",
+            "SAP transaction navigation"
+          ]
+        }
+      ],
+      "frameworks": [
+        {
+          "name": "YAML",
+          "purpose": "Configuration management for various application settings",
+          "key_features_used": [
+            "Human-readable data serialization",
+            "Configuration settings",
+            "API integrations"
+          ]
+        },
+        {
+          "name": "ABAP Object Services",
+          "purpose": "To provide advanced data manipulation and display capabilities within ABAP programs",
+          "key_features_used": [
+            "ALV (ABAP List Viewer) integration for data presentation",
+            "Object-oriented capabilities",
+            "Event handling"
+          ]
+        }
+      ],
+      "tools": [
+        {
+          "name": "OpenAI GPT-4 API",
+          "purpose": "External API integration for machine learning and AI functionalities"
+        }
+      ]
+    },
+    "code_patterns": [
+      {
+        "name": "ALV Reporting",
+        "description": "A common pattern in ABAP for generating interactive and interactive report displays using the ABAP List Viewer",
+        "example_location": "Z_LOCKED_USERS.abap"
+      },
+      {
+        "name": "Transaction Navigation",
+        "description": "Navigation to SAP transactions like SU01 for efficient user management directly from reports",
+        "example_location": "Z_LOCKED_USERS.abap"
+      }
+    ]
+  }
+});

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>z_locked_users_report Documentation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Ubuntu+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="site-header">
+        <div class="header-left">
+            <div class="logo">
+                <img src="assets/DHL-Logo.wine.png" alt="DHL Logo" width="120" height="60">
+                <span class="logo-text">DHL Documentation</span>
+            </div>
+        </div>
+        
+        <div class="header-center">
+            <div class="search-container">
+                <input type="search" class="search-input" placeholder="Search documentation... (Press '/' to focus)">
+                <div class="search-results"></div>
+            </div>
+        </div>
+        
+        <div class="header-right">
+            <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+                <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <circle cx="12" cy="12" r="4"></circle>
+                    <path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+                </svg>
+                <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="display: none;">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 A7 7 0 0 0 21 12.79z"></path>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h1>z_locked_users_report</h1>
+            <p>ABAP Project</p>
+        </div>
+
+        <div class="sidebar-content">
+            <div class="file-group">
+                <h3>ABAP</h3>
+                <ul>
+                    <li><a href="reference/Z_LOCKED_USERS.abap.html">Z_LOCKED_USERS.abap</a></li>
+                </ul>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main content -->
+    <main class="main-content">
+        <div class="project-overview">
+            <h1>z_locked_users_report</h1>
+            <p class="project-description"><p>The <strong>z_locked_users_report</strong> project is an application implemented using ABAP Object Services, designed primarily to manage and report on the status of user accounts — specifically, those that are locked or unlocked. This project leverages the power of SAP's ALV (ABAP List Viewer) for a user-friendly interface, facilitating administrative tasks related to user management in SAP systems.</p></p>
+            
+            <div class="metadata-grid">
+                <div class="metadata-item">
+                    <span class="metadata-label">Primary Language</span>
+                    <span class="metadata-value">ABAP</span>
+                </div>
+                <div class="metadata-item">
+                    <span class="metadata-label">Last Updated</span>
+                    <span class="metadata-value">2025-04-22T14:50:58.234571</span>
+                </div>
+                <div class="metadata-item">
+                    <span class="metadata-label">Git Commit</span>
+                    <span class="metadata-value">0c3f386d</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="tabs-container">
+            <nav class="tabs" role="tablist">
+                <button class="tab active" data-tab="features">Features</button>
+                <button class="tab" data-tab="architecture">Architecture</button>
+                <button class="tab" data-tab="tech-stack">Tech Stack</button>
+                <button class="tab" data-tab="dependencies">Dependencies</button>
+            </nav>
+
+            <div class="tab-content">
+                <div class="tab-pane active" id="features">
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-header">
+                                <h3>User Lock Status Report</h3>
+                                <span class="feature-status implemented">implemented</span>
+                            </div>
+                            <p class="feature-category">Core</p>
+                            <p class="feature-description"><p>Displays a list of locked or unlocked users based on a selection entered by the user. This is executed through an ABAP report, providing a straightforward interface for viewing user status directly within the SAP environment.</p></p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-header">
+                                <h3>User Navigation</h3>
+                                <span class="feature-status implemented">implemented</span>
+                            </div>
+                            <p class="feature-category">UI</p>
+                            <p class="feature-description"><p>Facilitates seamless navigation to the SU01 transaction code for user maintenance directly from the report interface, enabling a more integrated user management experience within SAP.</p></p>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="tab-pane" id="architecture">
+                    <div class="architecture-content">
+                        <div class="architecture-summary">
+                            <h3>Overview</h3>
+                            <p><p>The <strong>z_locked_users_report</strong> project is structured around SAP's ABAP programming runtime environment. It involves various components to manage and present data about user account statuses. The architecture is designed to integrate seamlessly with external services, emphasizing both interaction through configuration and data presentation via SAP's ALV (ABAP List Viewer) framework.</p></p>
+                        </div>
+                        
+                        <div class="component-section">
+                            <h3>Primary Components</h3>
+                            <div class="components-grid">
+                                <div class="component-card">
+                                    <h4>User Management Report Module</h4>
+                                    <p>Generates reports on user lock statuses and facilitates navigation to user administration.</p>
+                                    <div class="component-deps">
+                                        <strong>Dependencies:</strong>
+                                        <ul>
+                                            <li>cl_salv_table</li>
+                                            <li>cl_salv_events_table</li>
+                                            <li>cl_salv_columns_table</li>
+                                            <li>if_salv_c_cell_type</li>
+                                            <li>cx_salv_msg</li>
+                                            <li>cx_salv_not_found</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+            
+                        <div class="patterns-section">
+                            <h3>Design Patterns</h3>
+                            <div class="patterns-grid">
+                                <div class="pattern-card">
+                                    <h4>Model-View-Controller (MVC)</h4>
+                                    <p>Separates data handling (Model), user interaction (View), and application logic (Controller) to improve modularity and maintainability.</p>
+                                    <span class="pattern-location">Found in: The `Z_LOCKED_USERS.abap` file represents the Model and Controller that handle data retrieval and logical operations. The ALV framework acts as the View by rendering the data display.</span>
+                                </div>
+                                <div class="pattern-card">
+                                    <h4>Event-Driven Programming</h4>
+                                    <p>Implements event handling for user interactions with the ALV grid</p>
+                                    <span class="pattern-location">Found in: The lcl_alv_handler class implements event handling for grid clicks</span>
+                                </div>
+                                <div class="pattern-card">
+                                    <h4>Factory Pattern</h4>
+                                    <p>Uses cl_salv_table=&gt;factory for creating ALV instances</p>
+                                    <span class="pattern-location">Found in: The display_data form utilizes the factory method pattern through cl_salv_table=&gt;factory</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="tab-pane" id="tech-stack">
+                    <div class="tech-stack-content">
+                        <div class="tech-section">
+                            <h3>Languages</h3>
+                            <div class="tech-grid">
+                                <div class="tech-card">
+                                    <h4>ABAP</h4>
+                                    <p>Used to create reports and interact with SAP environments</p>
+                                    <div class="features-used">
+                                        <strong>Key Features:</strong>
+                                        <ul>
+                                            <li>ALV (ABAP List Viewer)</li>
+                                            <li>Object Oriented ABAP</li>
+                                            <li>SAP transaction navigation</li>
+                                            <li>Selection Screens</li>
+                                            <li>Internal Tables</li>
+                                            <li>Database Selection</li>
+                                            <li>Event Handling</li>
+                                            <li>Factory Methods</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+            
+                        <div class="tech-section">
+                            <h3>Frameworks</h3>
+                            <div class="tech-grid">
+                                <div class="tech-card">
+                                    <h4>ABAP Object Services</h4>
+                                    <p>To provide advanced data manipulation and display capabilities within ABAP programs</p>
+                                    <div class="features-used">
+                                        <strong>Key Features:</strong>
+                                        <ul>
+                                            <li>ALV (ABAP List Viewer) integration for data presentation</li>
+                                            <li>Object-oriented capabilities</li>
+                                            <li>Event handling</li>
+                                            <li>Factory pattern implementation</li>
+                                            <li>Column optimization</li>
+                                            <li>Hotspot cell configuration</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+            
+                        <div class="tech-section">
+                            <h3>Code Patterns</h3>
+                            <div class="patterns-grid">
+                                <div class="pattern-card">
+                                    <h4>ALV Reporting</h4>
+                                    <p>A common pattern in ABAP for generating interactive and interactive report displays using the ABAP List Viewer</p>
+                                    <span class="example-location">Example: Z_LOCKED_USERS.abap</span>
+                                </div>
+                                <div class="pattern-card">
+                                    <h4>Transaction Navigation</h4>
+                                    <p>Navigation to SAP transactions like SU01 for efficient user management directly from reports</p>
+                                    <span class="example-location">Example: Z_LOCKED_USERS.abap</span>
+                                </div>
+                                <div class="pattern-card">
+                                    <h4>Selection Screen Configuration</h4>
+                                    <p>Implementation of SAP selection screen with radio buttons for user input</p>
+                                    <span class="example-location">Example: Z_LOCKED_USERS.abap</span>
+                                </div>
+                                <div class="pattern-card">
+                                    <h4>Dynamic ALV Configuration</h4>
+                                    <p>Dynamic configuration of ALV grid properties including column settings and event handling</p>
+                                    <span class="example-location">Example: Z_LOCKED_USERS.abap</span>
+                                </div>
+                                <div class="pattern-card">
+                                    <h4>Error Handling</h4>
+                                    <p>Implementation of TRY-CATCH blocks for handling potential ALV-related exceptions</p>
+                                    <span class="example-location">Example: Z_LOCKED_USERS.abap</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="dependencies" role="tabpanel">
+                    <div class="dependencies-grid">
+                        <div class="dependency-card">
+                            <div class="dependency-header">
+                                <h3>cl_salv_table</h3>
+                                <span class="dependency-type">external</span>
+                            </div>
+                            <div class="dependency-version">N/A</div>
+                        </div>
+                        <div class="dependency-card">
+                            <div class="dependency-header">
+                                <h3>cl_salv_events_table</h3>
+                                <span class="dependency-type">external</span>
+                            </div>
+                            <div class="dependency-version">N/A</div>
+                        </div>
+                        <div class="dependency-card">
+                            <div class="dependency-header">
+                                <h3>cl_salv_columns_table</h3>
+                                <span class="dependency-type">external</span>
+                            </div>
+                            <div class="dependency-version">N/A</div>
+                        </div>
+                        <div class="dependency-card">
+                            <div class="dependency-header">
+                                <h3>if_salv_c_cell_type</h3>
+                                <span class="dependency-type">external</span>
+                            </div>
+                            <div class="dependency-version">N/A</div>
+                        </div>
+                        <div class="dependency-card">
+                            <div class="dependency-header">
+                                <h3>cx_salv_msg</h3>
+                                <span class="dependency-type">external</span>
+                            </div>
+                            <div class="dependency-version">N/A</div>
+                        </div>
+                        <div class="dependency-card">
+                            <div class="dependency-header">
+                                <h3>cx_salv_not_found</h3>
+                                <span class="dependency-type">external</span>
+                            </div>
+                            <div class="dependency-version">N/A</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="site-footer">
+            <p>Powered by <a href="https://fluen.io" target="_blank">Element.One Fluen</a></p>
+        </footer>
+    </main>
+
+    <script src="assets/script.js"></script>
+</body>
+</html>
