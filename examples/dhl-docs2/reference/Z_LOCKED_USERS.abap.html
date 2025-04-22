@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Z_LOCKED_USERS.abap | z_locked_users_report Documentation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Ubuntu+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="site-header">
+        <div class="header-left">
+            <div class="logo">
+                <img src="../assets/DHL-Logo.wine.png" alt="DHL Logo" width="120" height="60">
+                <span class="logo-text">DHL Documentation</span>
+            </div>
+        </div>
+        
+        <div class="header-center">
+            <div class="search-container">
+                <input type="search" class="search-input" placeholder="Search documentation... (Press '/' to focus)">
+                <div class="search-results"></div>
+            </div>
+        </div>
+        
+        <div class="header-right">
+            <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+                <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <circle cx="12" cy="12" r="4"></circle>
+                    <path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+                </svg>
+                <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="display: none;">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h1><a href="../index.html">z_locked_users_report</a></h1>
+            <p>ABAP Project</p>
+        </div>
+
+        <div class="sidebar-content">
+            <nav class="file-navigation">
+                <div class="nav-section">
+                    <h3>Report</h3>
+                    <ul>
+                        <li>
+                            <a href="#z_locked_users">
+                                z_locked_users
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="nav-section">
+                    <h3>Table</h3>
+                    <ul>
+                        <li>
+                            <a href="#usr02">
+                                usr02
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="nav-section">
+                    <h3>Type</h3>
+                    <ul>
+                        <li>
+                            <a href="#ty_user">
+                                ty_user
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="nav-section">
+                    <h3>Variable</h3>
+                    <ul>
+                        <li>
+                            <a href="#gt_user">
+                                gt_user
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#gs_user">
+                                gs_user
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#lr_table">
+                                lr_table
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#lr_events">
+                                lr_events
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#lr_columns_table">
+                                lr_columns_table
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#lv_heading">
+                                lv_heading
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#lv_count">
+                                lv_count
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="nav-section">
+                    <h3>Class</h3>
+                    <ul>
+                        <li>
+                            <a href="#lcl_alv_handler">
+                                lcl_alv_handler
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="nav-section">
+                    <h3>Method</h3>
+                    <ul>
+                        <li>
+                            <a href="#on_line_click">
+                                on_line_click
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="nav-section">
+                    <h3>Selection-Screen Element</h3>
+                    <ul>
+                        <li>
+                            <a href="#selection-screen-block">
+                                SELECTION-SCREEN BLOCK
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="nav-section">
+                    <h3>Selection-Screen Parameter</h3>
+                    <ul>
+                        <li>
+                            <a href="#p_lock">
+                                p_lock
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#p_nlock">
+                                p_nlock
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="nav-section">
+                    <h3>Text-Symbol</h3>
+                    <ul>
+                        <li>
+                            <a href="#text-001">
+                                text-001
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="nav-section">
+                    <h3>Form</h3>
+                    <ul>
+                        <li>
+                            <a href="#get_data">
+                                get_data
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#display_data">
+                                display_data
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </aside>
+
+    <!-- Main content -->
+    <main class="main-content">
+        <!-- File header -->
+        <div class="file-header">
+            <div class="breadcrumbs">
+                <a href="../index.html">z_locked_users_report</a>
+                <span class="separator">/</span>
+                <span class="current">Z_LOCKED_USERS.abap</span>
+            </div>
+
+            <div class="file-metadata">
+                <div class="metadata-item">
+                    <span class="metadata-label">Language</span>
+                    <span class="metadata-value">ABAP</span>
+                </div>
+                <div class="metadata-item">
+                    <span class="metadata-label">Last Modified</span>
+                    <span class="metadata-value">2025-04-22T14:50:48.211269</span>
+                </div>
+            </div>
+
+            <div class="file-purpose">
+                <h1>Z_LOCKED_USERS.abap</h1>
+                <p>This code is an ABAP report that displays a list of locked or unlocked users based on the user&#39;s selection and allows navigation to transaction SU01 for user maintenance.</p>
+            </div>
+        </div>
+
+        <!-- Dependencies section -->
+        <section class="file-dependencies">
+            <h2>Dependencies</h2>
+            <div class="dependencies-list">
+                <div class="dependency-item">
+                    <span class="dependency-name">cl_salv_table</span>
+                    <span class="dependency-type">external</span>
+                </div>
+                <div class="dependency-item">
+                    <span class="dependency-name">cl_salv_events_table</span>
+                    <span class="dependency-type">external</span>
+                </div>
+                <div class="dependency-item">
+                    <span class="dependency-name">cl_salv_columns_table</span>
+                    <span class="dependency-type">external</span>
+                </div>
+                <div class="dependency-item">
+                    <span class="dependency-name">if_salv_c_cell_type</span>
+                    <span class="dependency-type">external</span>
+                </div>
+                <div class="dependency-item">
+                    <span class="dependency-name">cx_salv_msg</span>
+                    <span class="dependency-type">external</span>
+                </div>
+                <div class="dependency-item">
+                    <span class="dependency-name">cx_salv_not_found</span>
+                    <span class="dependency-type">external</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dependency visualization -->
+        <section class="dependency-section">
+            <h2>Visualization</h2>
+            <div class="graph-wrapper">
+                <div id="dependencyGraph" class="dependency-graph"></div>
+            </div>
+        </section>
+
+        <!-- Code elements -->
+        <section class="code-elements">
+            <h2>Code Elements</h2>
+            <div class="element-group">
+                <h3>Report</h3>
+                
+                <div id="z_locked_users" class="element-card">
+                    <div class="element-header">
+                        <div class="element-name">
+                            <code>z_locked_users</code>
+                            <span class="scope-badge">global</span>
+                        </div>
+                        <span class="line-number">Line 8</span>
+                    </div>
+
+                    <div class="element-content">
+                        <div class="element-purpose">
+                            Main program for reporting locked/unlocked users.
+                        </div>
+
+                        <div class="element-documentation">
+                            Standard ABAP report header used for defining the report name.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="element-group">
+                <h3>Table</h3>
+                
+                <div id="usr02" class="element-card">
+                    <div class="element-header">
+                        <div class="element-name">
+                            <code>usr02</code>
+                            <span class="scope-badge">global</span>
+                        </div>
+                        <span class="line-number">Line 10</span>
+                    </div>
+
+                    <div class="element-content">
+                        <div class="element-purpose">
+                            ABAP table used to store user data, specifically for user information in the system.
+                        </div>
+
+                        <div class="element-documentation">
+                            Tables statement used to declare the SAP standard table USR02 for fetching user data.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="element-group">
+                <h3>Type</h3>
+                
+                <div id="ty_user" class="element-card">
+                    <div class="element-header">
+                        <div class="element-name">
+                            <code>ty_user</code>
+                            <span class="scope-badge">global</span>
+                        </div>
+                        <span class="line-number">Line 12</span>
+                    </div>
+
+                    <div class="element-content">
+                        <div class="element-purpose">
+                            Structure used to define the layout of user data.
+                        </div>
+
+                        <div class="element-documentation">
+                            Data type definition for storing individual user information with fields bname (username), erdat (creation date), and uflag (user flag status indicating locked or unlocked).
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="element-group">
+                <h3>Variable</h3>
+                
+                <div id="gt_user" class="element-card">
+                    <div class="element-header">
+                        <div class="element-name">
+                            <code>gt_user</code>
+                            <span class="scope-badge">global</span>
+                        </div>
+                        <span class="line-number">Line 19</span>
+                    </div>
+
+                    <div class="element-content">
+                        <div class="element-purpose">
+                            Internal table for storing user data fetched from database based on selection screen input.
+                        </div>
+
+                        <div class="element-documentation">
+                            Data declaration for an internal table holding multiple user entries.
+                        </div>
+                    </div>
+                </div>
+                <div id="gs_user" class="element-card">
+                    <div class="element-header">
+                        <div class="element-name">
+                            <code>gs_user</code>
+                            <span class="scope-badge">global</span>
+                        </div>
+                        <span class="line-number">Line 20</span>
+                    </div>
+
+                    <div class="element-content">
+                        <div class="element-purpose">
+                            Work area for individual user records during table operations.
+                        </div>
+
+                        <div class="element-documentation">
+                            Data declaration for a work area used to process single user entries within gt_user.
+                        </div>
+                    </div>
+                </div>
+                <div id="lr_table" class="element-card">
+                    <div class="element-header">
+                        <div class="element-name">
+                            <code>lr_table</code>
+                            <span class="scope-badge">local</span>
+                        </div>
+                        <span class="line-number">Line 54</span>
+                    </div>
+
+                    <div class="element-content">
+                        <div class="element-purpose">
+                            Reference variable for ALV table object
+                        </div>
+
+                        <div class="element-documentation">
+                            Holds reference to the main ALV grid table object for display configuration
+                        </div>
+                    </div>
+                </div>
+                <div id="lr_events" class="element-card">
+                    <div class="element-header">
+                        <div class="element-name">
+                            <code>lr_events</code>
+                            <span class="scope-badge">local</span>
+                        </div>
+                        <span class="line-number">Line 55</span>
+                    </div>
+
+                    <div class="element-content">
+                        <div class="element-purpose">
+                            Reference variable for ALV events
+                        </div>
+
+                        <div class="element-documentation">
+                            Manages event handling for the ALV grid
+                        </div>
+                    </div>
+                </div>
+                <div id="lr_columns_table" class="element-card">
+                    <div class="element-header">
+                        <div class="element-name">
+                            <code>lr_columns_table</code>
+                            <span class="scope-badge">local</span>
+                        </div>
+                        <span class="line-number">Line 57</span>
+                    </div>
+
+                    <div class="element-content">
+                        <div class="element-purpose">
+                            Reference variable for ALV columns configuration
+                        </div>
+
+                        <div class="element-documentation">
+                            Handles column settings and properties for the ALV display
+                        </div>
+                    </div>
+                </div>
+                <div id="lv_heading" class="element-card">
+                    <div class="element-header">
+                        <div class="element-name">
+                            <code>lv_heading</code>
+                            <span class="scope-badge">local</span>
+                        </div>
+                        <span class="line-number">Line 68</span>
+                    </div>
+
+                    <div class="element-content">
+                        <div class="element-purpose">
+                            Stores the header text for the ALV grid.
+                        </div>
+
+                        <div class="element-documentation">
+                            Dynamic header for ALV grid based on the count and selection of locked or unlocked users.
+                        </div>
+                    </div>
+                </div>
+                <div id="lv_count" class="element-card">
+                    <div class="element-header">
+                        <div class="element-name">
+                            <code>lv_count</code>
+                            <span class="scope-badge">local</span>
+                        </div>
+                        <span class="line-number">Line 69</span>
+                    </div>
+
+                    <div class="element-content">
+                        <div class="element-purpose">
+                            Stores the number of lines in the internal table gt_user.
+                        </div>
+
+                        <div class="element-documentation">
+                            Describes and holds the number of users matching the selected criteria.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="element-group">
+                <h3>Class</h3>
+                
+                <div id="lcl_alv_handler" class="element-card">
+                    <div class="element-header">
+                        <div class="element-name">
+                            <code>lcl_alv_handler</code>
+                            <span class="scope-badge">local</span>
+                        </div>
+                        <span class="line-number">Line 23</span>
+                    </div>
+
+                    <div class="element-content">
+                        <div class="element-purpose">
+                            Local class that functions as an event handler for ALV grid row click events.
+                        </div>
+
+                        <div class="element-documentation">
+                            Defines methods to handle click events, specifically navigating to transaction SU01 for the clicked user.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="element-group">
+                <h3>Method</h3>
+                
+                <div id="on_line_click" class="element-card">
+                    <div class="element-header">
+                        <div class="element-name">
+                            <code>on_line_click</code>
+                            <span class="scope-badge">local</span>
+                        </div>
+                        <span class="line-number">Line 27</span>
+                    </div>
+
+                    <div class="element-content">
+                        <div class="element-purpose">
+                            Handles click events on the ALV grid to navigate to user maintenance (SU01).
+                        </div>
+
+                        <div class="element-documentation">
+                            Reads selected row data to set the user parameter and initiates a call to transaction SU01 with that parameter.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="element-group">
+                <h3>Selection-Screen Element</h3>
+                
+                <div id="selection-screen-block" class="element-card">
+                    <div class="element-header">
+                        <div class="element-name">
+                            <code>SELECTION-SCREEN BLOCK</code>
+                            <span class="scope-badge">global</span>
+                        </div>
+                        <span class="line-number">Line 34</span>
+                    </div>
+
+                    <div class="element-content">
+                        <div class="element-purpose">
+                            Defines the user interface for selecting reporting criteria.
+                        </div>
+
+                        <div class="element-documentation">
+                            Group of screen elements allowing user to select locked or unlocked users through radio buttons.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="element-group">
+                <h3>Selection-Screen Parameter</h3>
+                
+                <div id="p_lock" class="element-card">
+                    <div class="element-header">
+                        <div class="element-name">
+                            <code>p_lock</code>
+                            <span class="scope-badge">global</span>
+                        </div>
+                        <span class="line-number">Line 35</span>
+                    </div>
+
+                    <div class="element-content">
+                        <div class="element-purpose">
+                            Radio button for selecting locked users.
+                        </div>
+
+                        <div class="element-documentation">
+                            Parameter for user input to signify the report should list locked users.
+                        </div>
+                    </div>
+                </div>
+                <div id="p_nlock" class="element-card">
+                    <div class="element-header">
+                        <div class="element-name">
+                            <code>p_nlock</code>
+                            <span class="scope-badge">global</span>
+                        </div>
+                        <span class="line-number">Line 36</span>
+                    </div>
+
+                    <div class="element-content">
+                        <div class="element-purpose">
+                            Radio button for selecting unlocked users.
+                        </div>
+
+                        <div class="element-documentation">
+                            Parameter for user input to signify the report should list unlocked users.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="element-group">
+                <h3>Text-Symbol</h3>
+                
+                <div id="text-001" class="element-card">
+                    <div class="element-header">
+                        <div class="element-name">
+                            <code>text-001</code>
+                            <span class="scope-badge">global</span>
+                        </div>
+                        <span class="line-number">Line 34</span>
+                    </div>
+
+                    <div class="element-content">
+                        <div class="element-purpose">
+                            Text symbol used for selection screen block title
+                        </div>
+
+                        <div class="element-documentation">
+                            Text symbol defining the title of the selection screen block
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="element-group">
+                <h3>Form</h3>
+                
+                <div id="get_data" class="element-card">
+                    <div class="element-header">
+                        <div class="element-name">
+                            <code>get_data</code>
+                            <span class="scope-badge">local</span>
+                        </div>
+                        <span class="line-number">Line 42</span>
+                    </div>
+
+                    <div class="element-content">
+                        <div class="element-purpose">
+                            Retrieves user data based on selected criteria from the selection screen.
+                        </div>
+
+                        <div class="element-documentation">
+                            ABAP form routine that selects users from USR02 table based on their lock status (uflag).
+                        </div>
+                    </div>
+                </div>
+                <div id="display_data" class="element-card">
+                    <div class="element-header">
+                        <div class="element-name">
+                            <code>display_data</code>
+                            <span class="scope-badge">local</span>
+                        </div>
+                        <span class="line-number">Line 54</span>
+                    </div>
+
+                    <div class="element-content">
+                        <div class="element-purpose">
+                            Displays the fetched user data in an ALV grid.
+                        </div>
+
+                        <div class="element-documentation">
+                            Sets up ALV grid with event handlers and displays the user data, allowing interaction.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="site-footer">
+            <p>Powered by <a href="https://fluen.io" target="_blank">Element.One Fluen</a></p>
+        </footer>
+    </main>
+    <!-- Add D3.js before other scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+    <!-- Add default graph data in case the server doesn't provide it -->
+
+    <script src="../assets/script.js"></script>
+<script>window.lineageData = {"nodes": [{"id": "Z_LOCKED_USERS.abap", "type": "current"}], "links": []};</script></body>
+</html>
