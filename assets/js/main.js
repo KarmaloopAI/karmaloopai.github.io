@@ -1,6 +1,36 @@
 // Karmaloop AI - Main JavaScript File
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialize typing effect
+    const typedElement = document.querySelector('.typed-text');
+    if (typedElement) {
+        new TypingEffect(typedElement, [
+            'works 24x7',
+            'closes sales for you',
+            'books your customers',
+            'handles your support',
+            'gets your invoices paid',
+            'documents code'
+        ], {
+            typeSpeed: 80,
+            deleteSpeed: 40,
+            pauseTime: 2000
+        });
+    }
+
+    const typedElementKai = document.querySelector('.typed-text-kai');
+    if (typedElementKai) {
+        new TypingEffect(typedElementKai, [
+            'The Clever Way to Close',
+            'Smart AI, Seamless Sales',
+            'Customer Support 24x7',
+        ], {
+            typeSpeed: 80,
+            deleteSpeed: 40,
+            pauseTime: 2000
+        });
+    }
+
     // Mobile menu toggle
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const header = document.querySelector('header');

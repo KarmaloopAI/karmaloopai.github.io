@@ -26,41 +26,42 @@
     <!-- Header Section -->
     <header>
         <div class="container header-container">
-            <a href="index.html">
-                <img src="LogoTransparent.svg" alt="Karmaloop AI Logo" class="logo">
+            <a href="/">
+                <img src="./LogoTransparent.svg" alt="Karmaloop AI Logo" class="logo">
             </a>
             <button class="mobile-menu-btn">
                 <i class="fas fa-bars"></i>
             </button>
             <nav>
                 <ul>
-                    <li><a href="index.html" class="active">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="/index.html" class="active">Home</a></li>
                     <li class="dropdown">
-                        <a href="products.html">Products</a>
+                        <a href="/agents.html">Agents</a>
                         <div class="dropdown-content">
-                            <a href="products/jiva.html">Jiva</a>
-                            <a href="products/fluen.html">Fluen</a>
+                            <a href="/kai">Kai</a>
+                            <a href="/jiva">Jiva</a>
+                            <a href="/fluen">Fluen</a>
                         </div>
                     </li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="/contact.html">Contact</a></li>
+                    <li><a href="/signin.html">Sign In</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero-section" style="background-image: url('DALL·E 2024-09-27 22.46.53 - Create a simple and subtle 3D animated-style image of a futuristic humanoid robot with a minimalistic design. The robot should have smooth white surfa.webp'); background-size: cover; background-position: center;">
+    <section class="hero-section" style="background-image: url('./assets/images/hero-image.png'); background-size: cover; background-position: center;">
         <div class="container">
             <div class="hero-content animate-on-scroll">
-                <h1>Transforming Business with AI Agents</h1>
+                <h1>AI Agents that</h1>
+                <h2 class="typed-text"></h2>
                 <p style="background: rgba(0, 0, 0, 0.7); padding: 15px; border-radius: 10px;">
-                    Karmaloop AI builds cutting-edge AI-enabled products driven by autonomous agents that help businesses automate complex tasks and discover new efficiencies.
+                    Experience the future of business automation with our suite of AI agents: Kai for voice calls, Jiva for task automation, and Fluen for code documentation. Get more done with less effort.
                 </p>
-                <div>
-                    <a href="#products" class="button">Explore Our Products</a>
-                    <a href="contact.html" class="button secondary">Contact Us</a>
+                <div class="hero-buttons">
+                    <a href="#products" class="button">Explore Our Agents</a>
+                    <a href="contact.html" class="button secondary">Book a Demo</a>
                 </div>
             </div>
         </div>
@@ -106,23 +107,39 @@
     <section id="products" class="section features-section">
         <div class="container">
             <div class="section-header animate-on-scroll">
-                <h2>Our Products</h2>
-                <p>Discover our innovative AI solutions designed to solve real-world problems.</p>
+                <h2>Our AI Agents</h2>
+                <p>Meet our family of specialized AI agents, each designed to handle specific business functions with human-like intelligence.</p>
             </div>
             
             <div class="animate-on-scroll">
                 <div class="product-card">
+                    <div class="product-image" style="background-image: url('assets/images/kai-logo.svg'); background-size: contain; background-repeat: no-repeat;"></div>
+                    <div class="product-content">
+                        <h3>Kai</h3>
+                        <p>Your intelligent phone assistant that makes and takes calls, enabling seamless voice interactions with customers, partners, and stakeholders.</p>
+                        <ul>
+                            <li>Natural voice conversations</li>
+                            <li>24/7 availability</li>
+                            <li>Multilingual capabilities</li>
+                            <li>Smart call handling and routing</li>
+                        </ul>
+                        <a href="/kai" class="button">Learn More</a>
+                        <a href="/contact.html" class="button secondary">Schedule a Demo</a>
+                    </div>
+                </div>
+                
+                <div class="product-card">
                     <div class="product-image" style="background-image: url('assets/images/jiva-logo.svg'); background-size: contain; background-repeat: no-repeat;"></div>
                     <div class="product-content">
                         <h3>Jiva</h3>
-                        <p>An autonomous agent framework powered by LLMs that excels at solving complex tasks autonomously. Jiva features temporal awareness, ethical decision-making, and advanced memory systems.</p>
+                        <p>An autonomous agent that handles your business tasks like a human would - from chasing invoices to managing communications and coordinating workflows.</p>
                         <ul>
-                            <li>Open-source framework</li>
-                            <li>Advanced memory systems</li>
-                            <li>Ethical decision-making</li>
-                            <li>Task management capabilities</li>
+                            <li>Email and task automation</li>
+                            <li>Invoice management</li>
+                            <li>Scheduling and coordination</li>
+                            <li>Advanced decision-making</li>
                         </ul>
-                        <a href="products/jiva.html" class="button">Learn More</a>
+                        <a href="/jiva" class="button">Learn More</a>
                         <a href="https://github.com/KarmaloopAI/Jiva" class="button secondary" target="_blank">GitHub <i class="fab fa-github"></i></a>
                     </div>
                 </div>
@@ -131,14 +148,14 @@
                     <div class="product-image" style="background-image: url('assets/images/fluen-logo.svg'); background-size: contain; background-repeat: no-repeat; background-color: #1e1e1e; background-position: center;"></div>
                     <div class="product-content">
                         <h3>Fluen</h3>
-                        <p>An automated code documentation solution powered by LLMs. Fluen helps developers maintain high-quality documentation with minimal effort, improving code readability and team collaboration.</p>
+                        <p>Your documentation companion that automatically generates and maintains high-quality software documentation, saving developers countless hours.</p>
                         <ul>
-                            <li>Open-source solution</li>
-                            <li>Automated documentation generation</li>
-                            <li>Support for multiple programming languages</li>
-                            <li>Seamless integration with development workflows</li>
+                            <li>Automated documentation</li>
+                            <li>Multiple language support</li>
+                            <li>CI/CD integration</li>
+                            <li>Real-time updates</li>
                         </ul>
-                        <a href="products/fluen.html" class="button">Learn More</a>
+                        <a href="/fluen" class="button">Learn More</a>
                         <a href="https://github.com/Fluen-io/fluen-core" class="button secondary" target="_blank">GitHub <i class="fab fa-github"></i></a>
                     </div>
                 </div>
@@ -146,42 +163,38 @@
         </div>
     </section>
 
-    <!-- Services Section -->
+    <!-- Integration Section -->
     <section class="section">
         <div class="container">
             <div class="section-header animate-on-scroll">
-                <h2>Our Services</h2>
-                <p>We provide customized AI solutions to meet your business needs.</p>
+                <h2>Seamless Integration</h2>
+                <p>Our AI agents are designed to work with your existing systems and workflows, providing immediate value without disrupting your operations.</p>
             </div>
             
-            <div class="grid animate-on-scroll">
-                <div class="card">
-                    <div class="card-icon">
-                        <i class="fas fa-tools"></i>
+            <div class="service-grid animate-on-scroll">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-phone-alt"></i>
                     </div>
-                    <h3>Custom Implementation</h3>
-                    <p>We provide customized implementation of the Jiva Framework and Fluen to meet your specific business requirements.</p>
+                    <h3>Voice Integration</h3>
+                    <p>Kai connects directly to your phone systems, handling calls seamlessly alongside your human team.</p>
                 </div>
                 
-                <div class="card">
-                    <div class="card-icon">
-                        <i class="fas fa-search"></i>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-tasks"></i>
                     </div>
-                    <h3>Job Function Discovery</h3>
-                    <p>We excel in discovering and automating job functions in companies using our advanced LLM agents.</p>
+                    <h3>Business Systems</h3>
+                    <p>Jiva integrates with your email, CRM, and business tools to automate workflows end-to-end.</p>
                 </div>
                 
-                <div class="card">
-                    <div class="card-icon">
-                        <i class="fas fa-laptop-code"></i>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-code"></i>
                     </div>
-                    <h3>Automated Engineering</h3>
-                    <p>We enable automated software product engineering using Jiva, accelerating your development process.</p>
+                    <h3>Development Tools</h3>
+                    <p>Fluen works with your existing development workflow, integrating with Git, CI/CD, and IDEs.</p>
                 </div>
-            </div>
-            
-            <div class="text-center" style="margin-top: 40px; text-align: center;">
-                <a href="services.html" class="button">Explore All Services</a>
             </div>
         </div>
     </section>
@@ -221,19 +234,18 @@
                 </div>
                 
                 <div class="footer-column">
-                    <h3>Products</h3>
+                    <h3>Agents</h3>
                     <ul>
-                        <li><a href="products/jiva.html">Jiva</a></li>
-                        <li><a href="products/fluen.html">Fluen</a></li>
+                        <li><a href="/kai">Kai</a></li>
+                        <li><a href="/jiva">Jiva</a></li>
+                        <li><a href="/fluen">Fluen</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-column">
                     <h3>Company</h3>
                     <ul>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="/contact.html">Contact</a></li>
                     </ul>
                 </div>
                 
@@ -252,6 +264,7 @@
     </footer>
 
     <!-- JavaScript -->
+    <script src="assets/js/typing-effect.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
 </html>
