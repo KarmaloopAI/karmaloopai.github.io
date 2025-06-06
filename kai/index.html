@@ -65,6 +65,36 @@
             margin-bottom: 20px;
         }
         
+        .name-input {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: 2px solid var(--border-color);
+            border-radius: 4px;
+            background: var(--secondary-color);
+            color: var(--text-color);
+            margin-bottom: 20px;
+        }
+        
+        .loading {
+            display: none;
+            margin-left: 8px;
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .loading i {
+            animation: spin 1s linear infinite;
+            color: var(--primary-color);
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
         /* IntlTelInput Styles */
         .iti__flag {background-image: url("https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/img/flags.png");}
         @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
@@ -176,7 +206,11 @@
                     <p>Enter your phone number and experience Kai's capabilities firsthand</p>
                     <div class="phone-input-container">
                         <input type="tel" id="phone" class="phone-input" placeholder="Enter your phone number">
+                        <input type="text" id="name" class="name-input" placeholder="Enter your name">
                         <button class="button" onclick="initiateCall()">Call Me</button>
+                        <div class="loading" id="loading">
+                            <i class="fas fa-spinner"></i>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -306,11 +340,12 @@
             'Smart AI, Seamless Sales',
             '24x7 Customer Support'
         ];
-        initTypingEffect('typed-text', phrases);
+        initTypingEffect('typed-text-kai', phrases);
     </script>
     <script>
         // Initialize phone input
         const phoneInput = document.querySelector("#phone");
+        const nameInput = document.querySelector("#name");
         const iti = window.intlTelInput(phoneInput, {
             utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
             separateDialCode: true,
@@ -333,11 +368,40 @@
 
         function initiateCall() {
             const phoneNumber = iti.getNumber();
-            if (phoneNumber && phoneNumber.length >= 10) {
-                // TODO: Add API call here
-                alert('We will call you shortly at ' + phoneNumber);
+            const name = nameInput.value.trim();
+            if (phoneNumber && phoneNumber.length >= 10 && name) {
+                document.getElementById('loading').style.display = 'inline-block';
+                
+                // Make API call to initiate the call
+                fetch('https://europe-west2-karmaloop-ai.cloudfunctions.net/vapi-outbound-call', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        customer: {
+                            number: phoneNumber,
+                            name: name
+                        },
+                        phoneNumberId: "f11e7e1c-4d09-4e50-8cb0-d636441f7f28",
+                        name: "Sales call to " + name
+                    })
+                })
+                .then(response => {
+                    document.getElementById('loading').style.display = 'none';
+                    if (response.ok) {
+                        alert('Great! Kai will call you shortly at ' + phoneNumber);
+                    } else {
+                        alert('Sorry, something went wrong. Please try again later.');
+                    }
+                })
+                .catch(error => {
+                    document.getElementById('loading').style.display = 'none';
+                    alert('Sorry, something went wrong. Please try again later.');
+                    console.error('Error:', error);
+                });
             } else {
-                alert('Please enter a valid 10-digit phone number');
+                alert('Please enter a valid 10-digit phone number and your name');
             }
         }
     </script>
