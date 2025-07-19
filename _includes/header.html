@@ -1,0 +1,25 @@
+<header>
+    <div class="container header-container">
+        <a href="{{ site.baseurl }}/">
+            <img src="{{ site.baseurl }}/LogoTransparent.svg" alt="Karmaloop AI Logo" class="logo">
+        </a>
+        <button class="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </button>
+        <nav>
+            <ul>
+                <li><a href="{{ site.baseurl }}/" {% if page.url == "/" %}class="active"{% endif %}>Home</a></li>
+                <li class="dropdown">
+                    <a href="{{ site.baseurl }}/agents/" {% if page.url contains "agents" or page.url contains "kai" or page.url contains "jiva" or page.url contains "fluen" %}class="active"{% endif %}>Agents</a>
+                    <div class="dropdown-content">
+                        <a href="{{ site.baseurl }}/kai/">Kai</a>
+                        <a href="{{ site.baseurl }}/jiva/">Jiva</a>
+                        <a href="{{ site.baseurl }}/fluen/">Fluen</a>
+                    </div>
+                </li>
+                <li><a href="{{ site.baseurl }}/contact/" {% if page.url contains "contact" %}class="active"{% endif %}>Contact</a></li>
+                <li><a href="{{ site.baseurl }}/signin/" {% if page.url contains "signin" %}class="active"{% endif %}>Sign In</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
