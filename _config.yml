@@ -1,0 +1,79 @@
+# Jekyll Configuration for Karmaloop AI Website
+
+# Site settings
+title: "Karmaloop AI"
+email: "contact@karmaloop.ai"
+description: "Building AI-enabled products driven by autonomous agents"
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://karmaloop.ai" # the base hostname & protocol for your site
+twitter_username: ""
+github_username: "KarmaloopAI"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Collections
+collections:
+  agents:
+    output: true
+    permalink: /:name/
+
+# Default front matter
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
+  - scope:
+      path: ""
+      type: "agents"
+    values:
+      layout: "agent"
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - .DS_Store
+
+# Include files
+include:
+  - CNAME
+
+# Sass settings
+sass:
+  sass_dir: _sass
+  style: compressed
+
+# SEO settings
+author: "Karmaloop AI"
+social:
+  name: "Karmaloop AI"
+  links:
+    - https://github.com/KarmaloopAI
+
+# Company information
+company:
+  name: "Karmaloop AI"
+  address: "Los Angeles, California, US"
+  phone:
+    us: "+1 424 250 2424"
+    uk: "+44 7436855207"
+  social:
+    github: "https://github.com/KarmaloopAI"
+    linkedin: "#"
+    twitter: "#"
