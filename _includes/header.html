@@ -9,16 +9,9 @@
         <nav>
             <ul>
                 <li><a href="{{ site.baseurl }}/" {% if page.url == "/" %}class="active"{% endif %}>Home</a></li>
-                <li class="dropdown">
-                    <a href="{{ site.baseurl }}/agents/" {% if page.url contains "agents" or page.url contains "kai" or page.url contains "jiva" or page.url contains "fluen" %}class="active"{% endif %}>Agents</a>
-                    <div class="dropdown-content">
-                        <a href="{{ site.baseurl }}/kai/">Kai</a>
-                        <a href="{{ site.baseurl }}/jiva/">Jiva</a>
-                        <a href="{{ site.baseurl }}/fluen/">Fluen</a>
-                    </div>
-                </li>
+                <li><a href="{{ site.baseurl }}/kai/" {% if page.url contains "kai" %}class="active"{% endif %}>Kai</a></li>
                 <li><a href="{{ site.baseurl }}/contact/" {% if page.url contains "contact" %}class="active"{% endif %}>Contact</a></li>
-                <li><a href="{{ site.baseurl }}/signin/" {% if page.url contains "signin" %}class="active"{% endif %}>Sign In</a></li>
+                <li><a href="https://app.karmaloop.ai" class="button login" target="_blank">Login</a></li>
             </ul>
         </nav>
     </div>

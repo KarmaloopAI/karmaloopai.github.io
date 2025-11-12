@@ -1,162 +1,243 @@
-// Karmaloop AI - Main JavaScript File
+// Karmaloop AI - Aurora Design System JavaScript
+// Enhanced animations and effects inspired by endgame.io
 
+// Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize typing effect
+    initializeAuroraEffects();
+    initializeScrollAnimations();
+    initializeNavigation();
+    initializeParticleSystem();
+    initializeStrategyShowcase();
+    
+    // Initialize typing effect if element exists
     const typedElement = document.querySelector('.typed-text');
     if (typedElement) {
         new TypingEffect(typedElement, [
-            'works 24x7',
-            'closes sales for you',
-            'books your customers',
-            'handles your support',
-            'gets your invoices paid',
-            'documents code'
+            'Let us do the talking',
+            'While you do the real work',
+            'The Uber Eats for Communications'
         ], {
             typeSpeed: 80,
             deleteSpeed: 40,
             pauseTime: 2000
         });
     }
+});
 
-    const typedElementKai = document.querySelector('.typed-text-kai');
-    if (typedElementKai) {
-        new TypingEffect(typedElementKai, [
-            'The Clever Way to Close',
-            'Smart AI, Seamless Sales',
-            'Customer Support 24x7',
-        ], {
-            typeSpeed: 80,
-            deleteSpeed: 40,
-            pauseTime: 2000
-        });
-    }
-
-    // Mobile menu toggle
-    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-    const header = document.querySelector('header');
+// Aurora Background Effects
+function initializeAuroraEffects() {
+    // Create aurora container
+    const auroraContainer = document.createElement('div');
+    auroraContainer.className = 'aurora-container';
     
-    if (mobileMenuBtn) {
-        mobileMenuBtn.addEventListener('click', function() {
-            header.classList.toggle('mobile-menu-open');
+    // Create multiple aurora waves
+    for (let i = 0; i < 3; i++) {
+        const wave = document.createElement('div');
+        wave.className = 'aurora-wave';
+        wave.style.animationDelay = `${i * 6}s`;
+        wave.style.opacity = 0.2 - (i * 0.05);
+        auroraContainer.appendChild(wave);
+    }
+    
+    document.body.prepend(auroraContainer);
+}
+
+// Particle System
+function initializeParticleSystem() {
+    const particlesContainer = document.createElement('div');
+    particlesContainer.className = 'particles';
+    
+    // Create floating particles
+    for (let i = 0; i < 30; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        
+        // Random positioning and animation delay
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 15 + 's';
+        particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+        
+        // Random particle size
+        const size = 1 + Math.random() * 3;
+        particle.style.width = size + 'px';
+        particle.style.height = size + 'px';
+        
+        particlesContainer.appendChild(particle);
+    }
+    
+    document.body.appendChild(particlesContainer);
+}
+
+// Enhanced Navigation
+function initializeNavigation() {
+    const header = document.querySelector('header');
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const navList = document.querySelector('nav ul');
+    
+    // Glassmorphism effect on scroll
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 100) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+    
+    // Mobile menu toggle
+    if (mobileMenuBtn && navList) {
+        mobileMenuBtn.addEventListener('click', () => {
+            navList.classList.toggle('mobile-open');
         });
     }
     
     // Close mobile menu when clicking outside
     document.addEventListener('click', function(event) {
-        if (header.classList.contains('mobile-menu-open') && 
+        if (navList && navList.classList.contains('mobile-open') && 
             !event.target.closest('header') && 
             !event.target.closest('.mobile-menu-btn')) {
-            header.classList.remove('mobile-menu-open');
+            navList.classList.remove('mobile-open');
         }
     });
     
-    // Scroll animations
+    // Active navigation highlighting
+    const navLinks = document.querySelectorAll('nav a');
+    const currentPage = window.location.pathname;
+    
+    navLinks.forEach(link => {
+        const linkPath = link.getAttribute('href');
+        if (currentPage.includes(linkPath) && linkPath !== '/') {
+            link.classList.add('active');
+        } else if (currentPage === '/' && linkPath === '/') {
+            link.classList.add('active');
+        }
+    });
+}
+
+// Strategy Center Showcase Animations
+function initializeStrategyShowcase() {
+    const dashboard = document.querySelector('.strategy-dashboard');
+    
+    if (dashboard) {
+        // Animate metrics when dashboard comes into view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateMetrics();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        observer.observe(dashboard);
+    }
+}
+
+// Animate metric numbers counting up
+function animateMetrics() {
+    const metricNumbers = document.querySelectorAll('.metric-number');
+    
+    metricNumbers.forEach(number => {
+        const finalValue = parseInt(number.textContent) || 0;
+        const duration = 2000; // 2 seconds
+        const increment = finalValue / (duration / 16); // 60fps
+        let currentValue = 0;
+        
+        const timer = setInterval(() => {
+            currentValue += increment;
+            if (currentValue >= finalValue) {
+                currentValue = finalValue;
+                clearInterval(timer);
+            }
+            number.textContent = Math.floor(currentValue);
+        }, 16);
+    });
+}
+
+// Enhanced Scroll Animations
+function initializeScrollAnimations() {
     const animateElements = document.querySelectorAll('.animate-on-scroll');
     
-    // Initial check for elements in viewport
-    checkAnimations();
-    
-    // Check elements on scroll
-    window.addEventListener('scroll', checkAnimations);
-    
-    function checkAnimations() {
-        const triggerBottom = window.innerHeight * 0.8;
-        
-        animateElements.forEach(element => {
-            const elementTop = element.getBoundingClientRect().top;
-            
-            if (elementTop < triggerBottom) {
-                element.classList.add('animate');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animated');
             }
         });
-    }
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
+    
+    animateElements.forEach(element => {
+        observer.observe(element);
+    });
     
     // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    document.querySelectorAll('a[href^=\"#\"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
             
             const targetId = this.getAttribute('href');
-            
             if (targetId === '#') return;
             
             const targetElement = document.querySelector(targetId);
-            
             if (targetElement) {
                 targetElement.scrollIntoView({
                     behavior: 'smooth',
                     block: 'start'
                 });
-                
-                // Close mobile menu if open
-                if (header.classList.contains('mobile-menu-open')) {
-                    header.classList.remove('mobile-menu-open');
-                }
             }
         });
     });
+}
+
+// Mouse movement parallax for aurora
+function initializeMouseParallax() {
+    const auroraWaves = document.querySelectorAll('.aurora-wave');
     
-    // Form validation for contact form
-    const contactForm = document.querySelector('.contact-form');
+    document.addEventListener('mousemove', (e) => {
+        const mouseX = e.clientX / window.innerWidth;
+        const mouseY = e.clientY / window.innerHeight;
+        
+        auroraWaves.forEach((wave, index) => {
+            const speed = (index + 1) * 0.05;
+            const x = (mouseX - 0.5) * speed * 100;
+            const y = (mouseY - 0.5) * speed * 100;
+            
+            wave.style.transform += ` translate(${x}px, ${y}px)`;
+        });
+    });
+}
+
+// Initialize advanced effects after page load
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        initializeMouseParallax();
+    }, 1000);
+});
+
+// FAQ functionality
+function initializeFAQ() {
+    const faqItems = document.querySelectorAll('.faq-item');
     
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        
+        question.addEventListener('click', () => {
+            const isActive = item.classList.contains('active');
             
-            // Basic validation
-            let valid = true;
-            const nameInput = contactForm.querySelector('input[name="name"]');
-            const emailInput = contactForm.querySelector('input[name="email"]');
-            const messageInput = contactForm.querySelector('textarea[name="message"]');
-            
-            // Reset error states
-            [nameInput, emailInput, messageInput].forEach(input => {
-                if (input) {
-                    input.style.borderColor = '';
-                }
+            // Close all FAQ items
+            faqItems.forEach(faqItem => {
+                faqItem.classList.remove('active');
             });
             
-            // Validate name
-            if (nameInput && nameInput.value.trim() === '') {
-                nameInput.style.borderColor = 'red';
-                valid = false;
-            }
-            
-            // Validate email
-            if (emailInput) {
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!emailRegex.test(emailInput.value.trim())) {
-                    emailInput.style.borderColor = 'red';
-                    valid = false;
-                }
-            }
-            
-            // Validate message
-            if (messageInput && messageInput.value.trim() === '') {
-                messageInput.style.borderColor = 'red';
-                valid = false;
-            }
-            
-            if (valid) {
-                // In a real implementation, you would send the form data to a server
-                // For now, just show a success message
-                contactForm.innerHTML = '<div class="success-message"><h3>Thank you for your message!</h3><p>We will get back to you as soon as possible.</p></div>';
+            // Open clicked item if it wasn't already active
+            if (!isActive) {
+                item.classList.add('active');
             }
         });
-    }
-    
-    // Set active navigation link based on current page
-    const currentPage = window.location.pathname;
-    const navLinks = document.querySelectorAll('nav a');
-    
-    navLinks.forEach(link => {
-        const linkPath = link.getAttribute('href');
-        
-        // Check if the current page matches the link or if we're on index and the link is to the home page
-        if (currentPage.endsWith(linkPath) || 
-            (currentPage.endsWith('/') && linkPath === 'index.html') ||
-            (currentPage.endsWith('index.html') && linkPath === 'index.html')) {
-            link.classList.add('active');
-        }
     });
-});
+}
+
+// Initialize FAQ when DOM is loaded
+document.addEventListener('DOMContentLoaded', initializeFAQ);

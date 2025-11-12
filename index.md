@@ -1,170 +1,157 @@
 ---
 layout: default
-title: "Karmaloop AI - AI-Enabled Products & Solutions"
-description: "Building AI-enabled products driven by autonomous agents"
-keywords: "AI, Autonomous Agents, Open Source, LLM, AI Framework, Karmaloop AI, Jiva, Fluen"
+title: "Karmaloop AI - Intelligent Communication Orchestration"
+description: "Let us do the talking, while you do the real work. Kai handles your calls with human-like intelligence."
+keywords: "AI Voice Agent, Kai, Communication AI, Phone Automation, Karmaloop AI"
 typing_effect: true
 ---
 
 <!-- Hero Section -->
-<section class="hero-section" style="background-image: url('./assets/images/hero-image.png'); background-size: cover; background-position: center;">
+<section class="hero-section">
     <div class="container">
         <div class="hero-content animate-on-scroll">
-            <h1>AI Agents that</h1>
-            <h2 class="typed-text"></h2>
-            <p style="background: rgba(0, 0, 0, 0.7); padding: 15px; border-radius: 10px;">
-                Experience the future of business automation with our suite of AI agents: Kai for voice calls, Jiva for task automation, and Fluen for code documentation. Get more done with less effort.
+            <h1>Let AI Orchestrate Your Communication Strategy</h1>
+            <p class="subtitle">
+                <span class="typed-text"></span>
+            </p>
+            <p style="font-size: 1.2rem; margin-bottom: 3rem;">
+                From first contact to closed deal, Kai makes every conversation count. 
+                The Uber Eats for communications - we handle the talking, you handle the results.
             </p>
             <div class="hero-buttons">
-                <a href="#products" class="button">Explore Our Agents</a>
+                <a href="#kai-showcase" class="button">See Kai in Action</a>
                 <a href="{{ site.baseurl }}/contact/" class="button secondary">Book a Demo</a>
             </div>
         </div>
     </div>
 </section>
 
-<!-- About Section -->
-<section class="section">
+<!-- Kai Strategy Center Showcase -->
+<section id="kai-showcase" class="section strategy-showcase">
     <div class="container">
         <div class="section-header animate-on-scroll">
-            <h2>Pioneering the Future of AI</h2>
-            <p>At Karmaloop AI, we're dedicated to building AI-enabled products that transform how businesses operate. Our autonomous agents excel at solving complex tasks, automating job functions, and enabling new possibilities.</p>
-        </div>
-        
-        <div class="grid animate-on-scroll">
-            <div class="card">
-                <div class="card-icon">
-                    <i class="fas fa-robot"></i>
-                </div>
-                <h3>AI Agents</h3>
-                <p>We build autonomous AI agents that can understand, learn, and execute complex tasks with minimal human intervention.</p>
-            </div>
-            
-            <div class="card">
-                <div class="card-icon">
-                    <i class="fas fa-cogs"></i>
-                </div>
-                <h3>Process Automation</h3>
-                <p>Our solutions discover and automate job functions in companies, increasing efficiency and reducing operational costs.</p>
-            </div>
-            
-            <div class="card">
-                <div class="card-icon">
-                    <i class="fas fa-code"></i>
-                </div>
-                <h3>Software Engineering</h3>
-                <p>We enable automated software product engineering using our Jiva framework, accelerating development cycles.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Products Section -->
-<section id="products" class="section features-section">
-    <div class="container">
-        <div class="section-header animate-on-scroll">
-            <h2>Our AI Agents</h2>
-            <p>Meet our family of specialized AI agents, each designed to handle specific business functions with human-like intelligence.</p>
+            <h2>The Kai Strategy Center</h2>
+            <p>See how Kai orchestrates intelligent communication strategies that transform your business outreach into a systematic success engine.</p>
         </div>
         
         <div class="animate-on-scroll">
-            <div class="product-card">
-                <div class="product-image" style="background-image: url('assets/images/kai-logo.svg'); background-size: contain; background-repeat: no-repeat;"></div>
-                <div class="product-content">
-                    <h3>Kai</h3>
-                    <p>Your intelligent phone assistant that makes and takes calls, enabling seamless voice interactions with customers, partners, and stakeholders.</p>
-                    <ul>
-                        <li>Natural voice conversations</li>
-                        <li>24/7 availability</li>
-                        <li>Multilingual capabilities</li>
-                        <li>Smart call handling and routing</li>
-                    </ul>
-                    <a href="{{ site.baseurl }}/kai/" class="button">Learn More</a>
-                    <a href="{{ site.baseurl }}/contact/" class="button secondary">Schedule a Demo</a>
-                </div>
-            </div>
+            <img src="{{ site.baseurl }}/assets/images/kai-strategy-center.jpg" alt="Kai Strategy Center Dashboard" class="strategy-image" loading="lazy">
             
-            <div class="product-card">
-                <div class="product-image" style="background-image: url('assets/images/jiva-logo.svg'); background-size: contain; background-repeat: no-repeat;"></div>
-                <div class="product-content">
-                    <h3>Jiva</h3>
-                    <p>An autonomous agent that handles your business tasks like a human would - from chasing invoices to managing communications and coordinating workflows.</p>
-                    <ul>
-                        <li>Email and task automation</li>
-                        <li>Invoice management</li>
-                        <li>Scheduling and coordination</li>
-                        <li>Advanced decision-making</li>
-                    </ul>
-                    <a href="{{ site.baseurl }}/jiva/" class="button">Learn More</a>
-                    <a href="https://github.com/KarmaloopAI/Jiva" class="button secondary" target="_blank">GitHub <i class="fab fa-github"></i></a>
-                </div>
-            </div>
-            
-            <div class="product-card">
-                <div class="product-image" style="background-image: url('assets/images/fluen-logo.svg'); background-size: contain; background-repeat: no-repeat; background-color: #1e1e1e; background-position: center;"></div>
-                <div class="product-content">
-                    <h3>Fluen</h3>
-                    <p>Your documentation companion that automatically generates and maintains high-quality software documentation, saving developers countless hours.</p>
-                    <ul>
-                        <li>Automated documentation</li>
-                        <li>Multiple language support</li>
-                        <li>CI/CD integration</li>
-                        <li>Real-time updates</li>
-                    </ul>
-                    <a href="{{ site.baseurl }}/fluen/" class="button">Learn More</a>
-                    <a href="https://github.com/Fluen-io/fluen-core" class="button secondary" target="_blank">GitHub <i class="fab fa-github"></i></a>
-                </div>
+            <div class="strategy-content">
+                <h3>Meet Kai</h3>
+                <p>
+                    Your intelligent controller agent that helps create personalized outbound communication 
+                    strategies through conversation. Kai analyzes your contacts, creates targeted approaches, 
+                    and executes perfectly timed communications.
+                </p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Integration Section -->
-<section class="section">
+<!-- How Kai Works -->
+<section id="how-it-works" class="section">
     <div class="container">
         <div class="section-header animate-on-scroll">
-            <h2>Seamless Integration</h2>
-            <p>Our AI agents are designed to work with your existing systems and workflows, providing immediate value without disrupting your operations.</p>
+            <h2>How Kai Transforms Your Communications</h2>
+            <p>From analysis to execution, Kai orchestrates every step of your communication strategy with AI precision.</p>
         </div>
         
-        <div class="service-grid animate-on-scroll">
-            <div class="service-card">
-                <div class="service-icon">
+        <div class="features-grid animate-on-scroll">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h3>Analysis</h3>
+                <p>Kai analyzes your contacts, conversation history, and business goals to understand the perfect communication approach for each prospect.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-chess"></i>
+                </div>
+                <h3>Strategy</h3>
+                <p>Creates personalized outreach strategies with optimal timing, messaging, and approach tailored to each contact's profile and preferences.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
                     <i class="fas fa-phone-alt"></i>
                 </div>
-                <h3>Voice Integration</h3>
-                <p>Kai connects directly to your phone systems, handling calls seamlessly alongside your human team.</p>
+                <h3>Execution</h3>
+                <p>Executes perfectly timed phone calls with natural, human-like conversations that feel personal and achieve your business objectives.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Results Section -->
+<section class="section results-section">
+    <div class="container">
+        <div class="section-header animate-on-scroll">
+            <h2>Results That Speak for Themselves</h2>
+            <p>Kai doesn't just handle calls - it transforms your entire communication performance into measurable business growth.</p>
+        </div>
+        
+        <div class="features-grid animate-on-scroll">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="feature-content">
+                    <div class="stat-number">87%</div>
+                    <h4>Increase in Contact Engagement</h4>
+                    <p>Transform cold outreach into meaningful conversations with AI-powered personalization</p>
+                </div>
             </div>
             
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-tasks"></i>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-users"></i>
                 </div>
-                <h3>Business Systems</h3>
-                <p>Jiva integrates with your email, CRM, and business tools to automate workflows end-to-end.</p>
+                <div class="feature-content">
+                    <div class="stat-number">3.5x</div>
+                    <h4>More Qualified Leads</h4>
+                    <p>Generate higher quality prospects through intelligent conversation targeting</p>
+                </div>
             </div>
             
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-code"></i>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-robot"></i>
                 </div>
-                <h3>Development Tools</h3>
-                <p>Fluen works with your existing development workflow, integrating with Git, CI/CD, and IDEs.</p>
+                <div class="feature-content">
+                    <div class="stat-number">62%</div>
+                    <h4>Reduction in Manual Planning</h4>
+                    <p>Automate strategy development and execution with autonomous intelligence</p>
+                </div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div class="feature-content">
+                    <div class="stat-number">24/7</div>
+                    <h4>Always Available</h4>
+                    <p>Never miss an opportunity with round-the-clock intelligent communication</p>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
 <!-- CTA Section -->
-<section class="section contact-section">
+<section class="section">
     <div class="container">
         <div class="section-header animate-on-scroll">
-            <h2>Ready to Transform Your Business?</h2>
-            <p>Get in touch with us to discuss how our AI solutions can help your organization.</p>
+            <h2>Ready to Let Kai Handle Your Communications?</h2>
+            <p>Experience the power of AI-driven communication orchestration. Let us do the talking while you focus on what matters most.</p>
         </div>
         
-        <div class="text-center animate-on-scroll" style="text-align: center;">
-            <a href="{{ site.baseurl }}/contact/" class="button">Contact Us Today</a>
+        <div class="hero-buttons animate-on-scroll" style="justify-content: center;">
+            <a href="https://app.karmaloop.ai" class="button" target="_blank">Start with Kai</a>
+            <a href="{{ site.baseurl }}/contact/" class="button secondary">Schedule a Demo</a>
         </div>
     </div>
 </section>

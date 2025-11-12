@@ -4,25 +4,23 @@
             <div class="footer-column">
                 <h3>{{ site.company.name }}</h3>
                 <p>{{ site.description }}</p>
-                <p>
-                    <a href="{{ site.company.social.github }}" target="_blank">
+                <div class="social-links">
+                    <a href="{{ site.company.social.github }}" target="_blank" aria-label="GitHub">
                         <i class="fab fa-github"></i>
                     </a>
-                    <a href="{{ site.company.social.linkedin }}" target="_blank" style="margin-left: 15px;">
+                    <a href="{{ site.company.social.linkedin }}" target="_blank" aria-label="LinkedIn">
                         <i class="fab fa-linkedin"></i>
                     </a>
-                    <a href="{{ site.company.social.twitter }}" target="_blank" style="margin-left: 15px;">
+                    <a href="{{ site.company.social.twitter }}" target="_blank" aria-label="Twitter">
                         <i class="fab fa-twitter"></i>
                     </a>
-                </p>
+                </div>
             </div>
             
             <div class="footer-column">
                 <h3>Agents</h3>
                 <ul>
                     <li><a href="{{ site.baseurl }}/kai/">Kai</a></li>
-                    <li><a href="{{ site.baseurl }}/jiva/">Jiva</a></li>
-                    <li><a href="{{ site.baseurl }}/fluen/">Fluen</a></li>
                 </ul>
             </div>
             
@@ -41,7 +39,7 @@
             </div>
         </div>
         
-        <div class="copyright">
+        <div class="footer-bottom">
             <p>&copy; {{ site.time | date: "%Y" }} {{ site.company.name }}. All Rights Reserved.</p>
         </div>
     </div>
