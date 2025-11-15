@@ -5,6 +5,8 @@ description: "Kai - AI Voice Agent for Sales and Support Calls"
 keywords: "AI Voice Agent, Sales Calls, Support Calls, Customer Service, AI Phone Calls"
 ---
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css">
+
 <!-- Hero Section -->
 <section class="hero-section">
     <div class="container">
@@ -16,7 +18,7 @@ keywords: "AI Voice Agent, Sales Calls, Support Calls, Customer Service, AI Phon
             </div>
             <div class="demo-call-section animate-on-scroll">
                 <div class="demo-call-card">
-                    <h2>🎯 Experience Kai Live</h2>
+                    <h2>📞 Experience Kai Live</h2>
                     <p>Get a personalized demo call and see how Kai can transform your business communication</p>
                     
                     <div class="demo-call-form" id="demoForm">
@@ -237,6 +239,80 @@ keywords: "AI Voice Agent, Sales Calls, Support Calls, Customer Service, AI Phon
     color: var(--text-secondary);
 }
 
+/* International Phone Input Styling */
+.phone-input-group {
+    position: relative;
+}
+
+.iti {
+    width: 100%;
+    position: relative;
+}
+
+.iti__selected-flag {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px 0 0 12px;
+    padding: 1rem 0.8rem;
+    transition: all var(--transition-speed) var(--transition-smooth);
+}
+
+.iti__selected-flag:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.iti__arrow {
+    border-top-color: var(--text-secondary);
+}
+
+.iti__country-list {
+    background: var(--bg-glass);
+    backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+}
+
+.iti__country {
+    color: var(--text-primary);
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.iti__country:hover {
+    background: rgba(139, 92, 246, 0.1);
+}
+
+.iti__country.iti__highlight {
+    background: rgba(139, 92, 246, 0.2);
+}
+
+.iti__country-name {
+    color: var(--text-primary);
+}
+
+.iti__dial-code {
+    color: var(--text-secondary);
+}
+
+.iti input[type=tel] {
+    border-left: none;
+    border-radius: 0 12px 12px 0;
+    padding-left: 1rem;
+}
+
+/* IntlTelInput Flag Images */
+.iti__flag {
+    background-image: url("https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/img/flags.png");
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .iti__flag {
+        background-image: url("https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/img/flags@2x.png");
+    }
+}
+
 #otpInput {
     font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
     font-size: 1.5rem;
@@ -379,6 +455,7 @@ keywords: "AI Voice Agent, Sales Calls, Support Calls, Customer Service, AI Phon
 }
 </style>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
 <script src="{{ site.baseurl }}/assets/js/typing-effect.js"></script>
 <script>
 // Initialize typing effect
@@ -392,6 +469,7 @@ const phrases = [
 // Initialize typing effect when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
     initTypingEffect('typed-text-kai', phrases);
+    initPhoneInput();
 });
 
 // Demo call flow variables
@@ -399,43 +477,63 @@ let currentStep = 1;
 let userPhoneNumber = '';
 let userFirstName = '';
 let userLastName = '';
+let phoneInputInstance = null;
 
 // Supabase edge function endpoint
 const DEMO_CALL_ENDPOINT = 'https://bxmwvpdlzkttabpxcajt.supabase.co/functions/v1/demo-call';
+
+// Initialize international phone input
+function initPhoneInput() {
+    const phoneInput = document.getElementById('phoneInput');
+    phoneInputInstance = window.intlTelInput(phoneInput, {
+        utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+        separateDialCode: false,
+        initialCountry: "auto",
+        preferredCountries: ["us", "gb", "ca", "au"],
+        geoIpLookup: function(callback) {
+            fetch("https://ipapi.co/json")
+                .then(res => res.json())
+                .then(data => callback(data.country_code))
+                .catch(() => callback("us"));
+        }
+    });
+    
+    // Add numeric input restriction
+    phoneInput.addEventListener('input', function(e) {
+        // Allow only numbers, plus, minus, parentheses, and spaces
+        this.value = this.value.replace(/[^0-9\+\-\(\)\s]/g, '');
+    });
+}
 
 // Step 1: Request OTP
 async function requestOTP() {
     const firstName = document.getElementById('firstName').value.trim();
     const lastName = document.getElementById('lastName').value.trim();
-    const phoneNumber = document.getElementById('phoneInput').value.trim();
+    
+    // Get the full international phone number from intl-tel-input
+    if (!phoneInputInstance) {
+        alert('Phone input not initialized. Please refresh the page.');
+        return;
+    }
+    
+    const phoneNumber = phoneInputInstance.getNumber();
     
     // Basic validation
-    if (!firstName || !lastName || !phoneNumber) {
-        alert('Please fill in all fields');
+    if (!firstName || !lastName) {
+        alert('Please fill in your first and last name');
         return;
     }
     
-    // Phone number validation (basic)
-    const phoneRegex = /^[\+]?[\s\-\(\)]?[\d\s\-\(\)]+$/;
-    if (!phoneRegex.test(phoneNumber) || phoneNumber.length < 10) {
+    // Validate phone number using intl-tel-input validation
+    if (!phoneInputInstance.isValidNumber()) {
         alert('Please enter a valid phone number');
         return;
-    }
-    
-    // Clean and format phone number
-    let cleanPhone = phoneNumber.replace(/\D/g, '');
-    if (cleanPhone.length === 10) {
-        cleanPhone = '+1' + cleanPhone; // Assume US if no country code
-    } else if (cleanPhone.length === 11 && cleanPhone.startsWith('1')) {
-        cleanPhone = '+' + cleanPhone;
-    } else if (!cleanPhone.startsWith('+')) {
-        cleanPhone = '+' + cleanPhone;
     }
     
     // Store user data
     userFirstName = firstName;
     userLastName = lastName;
-    userPhoneNumber = cleanPhone;
+    userPhoneNumber = phoneNumber;
     
     // Update UI
     const btn = document.getElementById('requestOTPBtn');
@@ -580,22 +678,5 @@ document.getElementById('otpInput').addEventListener('input', function(e) {
     if (value.length === 6) {
         setTimeout(() => verifyAndCall(), 500);
     }
-});
-
-// Format phone number input
-document.getElementById('phoneInput').addEventListener('input', function(e) {
-    let value = e.target.value.replace(/\D/g, '');
-    
-    if (value.length > 0) {
-        if (value.length <= 3) {
-            value = `(${value}`;
-        } else if (value.length <= 6) {
-            value = `(${value.slice(0, 3)}) ${value.slice(3)}`;
-        } else {
-            value = `(${value.slice(0, 3)}) ${value.slice(3, 6)}-${value.slice(6, 10)}`;
-        }
-    }
-    
-    e.target.value = value;
 });
 </script>
