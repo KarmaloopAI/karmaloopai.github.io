@@ -5,171 +5,69 @@ description: "Kai - AI Voice Agent for Sales and Support Calls"
 keywords: "AI Voice Agent, Sales Calls, Support Calls, Customer Service, AI Phone Calls"
 ---
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css">
-
-<style>
-    .hero-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 40px;
-        align-items: center;
-        margin: 0 auto;
-        max-width: 1200px;
-    }
-    
-    .hero-content {
-        padding-right: 40px;
-    }
-    
-    .phone-section {
-        background: var(--card-bg);
-        padding: 40px;
-        border-radius: 10px;
-        text-align: center;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-    
-    .phone-input-container {
-        max-width: 400px;
-        margin: 20px auto;
-    }
-    
-    .iti {
-        width: 100%;
-        margin-bottom: 20px;
-    }
-    
-    .phone-input {
-        width: 100%;
-        padding: 12px;
-        font-size: 16px;
-        border: 2px solid var(--border-color);
-        border-radius: 4px;
-        background: var(--secondary-color);
-        color: var(--text-color);
-        margin-bottom: 20px;
-    }
-    
-    .name-input {
-        width: 100%;
-        padding: 12px;
-        font-size: 16px;
-        border: 2px solid var(--border-color);
-        border-radius: 4px;
-        background: var(--secondary-color);
-        color: var(--text-color);
-        margin-bottom: 20px;
-    }
-    
-    .loading {
-        display: none;
-        margin-left: 8px;
-        position: absolute;
-        right: 15px;
-        top: 50%;
-        transform: translateY(-50%);
-    }
-
-    .loading i {
-        animation: spin 1s linear infinite;
-        color: var(--primary-color);
-    }
-
-    @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-    }
-
-    /* IntlTelInput Styles */
-    .iti__flag {background-image: url("https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/img/flags.png");}
-    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-        .iti__flag {background-image: url("https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/img/flags@2x.png");}
-    }
-    .iti {
-        width: 100%;
-        margin-bottom: 20px;
-    }
-    .iti__selected-flag {
-        background-color: var(--card-bg) !important;
-    }
-    .iti__country-list {
-        background-color: var(--card-bg);
-        border: 1px solid var(--border-color);
-    }
-    .iti__country {
-        color: var(--text-color);
-    }
-    .iti__country:hover {
-        background-color: var(--primary-color);
-    }
-
-    .feature-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 30px;
-        margin: 60px 0;
-    }
-    
-    .feature-item {
-        text-align: center;
-        padding: 30px;
-    }
-    
-    .feature-icon {
-        font-size: 2.5rem;
-        color: var(--primary-color);
-        margin-bottom: 20px;
-    }
-
-    @media (max-width: 992px) {
-        .hero-grid {
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
-
-        .hero-content {
-            padding-right: 0;
-            text-align: center;
-        }
-        
-        .phone-section {
-            margin-top: 20px;
-        }
-    }
-
-    .hero-section {
-        position: relative;
-        overflow: hidden;
-        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('{{ site.baseurl }}/assets/images/hero-plain.png');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        padding: 150px 0 100px;
-        min-height: 80vh;
-    }
-</style>
-
 <!-- Hero Section -->
 <section class="hero-section">
     <div class="container">
-        <div class="hero-grid">
+        <div class="kai-hero-grid">
             <div class="hero-content animate-on-scroll">
                 <h1>Meet Kai</h1>
                 <div class="typed-text-kai" id="typed-text-kai"></div>
-                <p>Your AI voice agent that handles sales and support calls with human-like intelligence</p>
+                <p>Your AI voice agent that handles sales and support calls with human-like intelligence. Experience the future of customer communication.</p>
             </div>
-            <div class="phone-section animate-on-scroll">
-                <h2>Speak with Kai Now</h2>
-                <p>Enter your phone number and experience Kai's capabilities firsthand</p>
-                <div class="phone-input-container">
-                    <input type="tel" id="phone" class="phone-input" placeholder="Enter your phone number">
-                    <input type="text" id="name" class="name-input" placeholder="Enter your name">
-                    <button class="button" onclick="initiateCall()">Call Me</button>
-                    <div class="loading" id="loading">
-                        <i class="fas fa-spinner"></i>
+            <div class="demo-call-section animate-on-scroll">
+                <div class="demo-call-card">
+                    <h2>🎯 Experience Kai Live</h2>
+                    <p>Get a personalized demo call and see how Kai can transform your business communication</p>
+                    
+                    <div class="demo-call-form" id="demoForm">
+                        <!-- Step 1: Contact Info -->
+                        <div class="form-step" id="step1">
+                            <div class="input-group">
+                                <input type="text" id="firstName" placeholder="First Name" required>
+                            </div>
+                            <div class="input-group">
+                                <input type="text" id="lastName" placeholder="Last Name" required>
+                            </div>
+                            <div class="input-group phone-input-group">
+                                <input type="tel" id="phoneInput" placeholder="Phone Number" required>
+                            </div>
+                            <button class="demo-button" onclick="requestOTP()" id="requestOTPBtn">
+                                <span class="btn-text">Send Demo Code</span>
+                                <span class="btn-loading" style="display: none;">
+                                    <i class="fas fa-spinner fa-spin"></i> Sending...
+                                </span>
+                            </button>
+                        </div>
+                        
+                        <!-- Step 2: OTP Verification -->
+                        <div class="form-step" id="step2" style="display: none;">
+                            <div class="otp-header">
+                                <h3>📱 Check Your Phone</h3>
+                                <p>Enter the 6-digit code we sent to <span id="phoneDisplay"></span></p>
+                            </div>
+                            <div class="input-group">
+                                <input type="text" id="otpInput" placeholder="000000" maxlength="6" pattern="[0-9]*">
+                            </div>
+                            <button class="demo-button" onclick="verifyAndCall()" id="verifyCallBtn">
+                                <span class="btn-text">Start Demo Call</span>
+                                <span class="btn-loading" style="display: none;">
+                                    <i class="fas fa-spinner fa-spin"></i> Connecting...
+                                </span>
+                            </button>
+                            <button class="link-button" onclick="goBackToStep1()">
+                                <i class="fas fa-arrow-left"></i> Change Phone Number
+                            </button>
+                        </div>
+                        
+                        <!-- Success Message -->
+                        <div class="form-step success-message" id="successStep" style="display: none;">
+                            <div class="success-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <h3>🎉 Demo Call Initiated!</h3>
+                            <p>Kai will call you at <span id="successPhone"></span> within the next 30 seconds. Get ready for an amazing conversation!</p>
+                            <button class="link-button" onclick="resetForm()">Schedule Another Demo</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -180,136 +78,524 @@ keywords: "AI Voice Agent, Sales Calls, Support Calls, Customer Service, AI Phon
 <!-- Features Section -->
 <section class="section">
     <div class="container">
-        <div class="feature-grid">
-            <div class="feature-item animate-on-scroll">
+        <div class="section-header animate-on-scroll">
+            <h2>Why Choose Kai?</h2>
+            <p>Transform your business communication with AI-powered voice intelligence</p>
+        </div>
+        
+        <div class="features-grid animate-on-scroll">
+            <div class="feature-card">
                 <div class="feature-icon">
                     <i class="fas fa-phone-volume"></i>
                 </div>
                 <h3>24/7 Availability</h3>
-                <p>Never miss a call. Kai handles customer inquiries around the clock, ensuring your business is always accessible.</p>
+                <p>Never miss a call. Kai handles customer inquiries around the clock, ensuring your business is always accessible to prospects and customers.</p>
             </div>
 
-            <div class="feature-item animate-on-scroll">
+            <div class="feature-card">
                 <div class="feature-icon">
                     <i class="fas fa-chart-line"></i>
                 </div>
                 <h3>Sales Optimization</h3>
-                <p>Convert more leads with Kai's intelligent sales approach, follow-ups, and appointment scheduling.</p>
+                <p>Convert more leads with Kai's intelligent sales approach, automated follow-ups, and seamless appointment scheduling capabilities.</p>
             </div>
 
-            <div class="feature-item animate-on-scroll">
+            <div class="feature-card">
                 <div class="feature-icon">
                     <i class="fas fa-headset"></i>
                 </div>
                 <h3>Customer Support</h3>
-                <p>Provide instant support resolution with Kai's deep understanding of your business and products.</p>
-            </div>
-        </div>
-
-        <div class="section-header animate-on-scroll">
-            <h2>How Kai Works</h2>
-            <p>Kai uses advanced AI to handle your calls naturally and efficiently</p>
-        </div>
-
-        <div class="feature-grid">
-            <div class="feature-item animate-on-scroll">
-                <div class="feature-icon">
-                    <i class="fas fa-robot"></i>
-                </div>
-                <h3>Natural Conversations</h3>
-                <p>Kai engages in human-like conversations, understanding context and responding appropriately.</p>
-            </div>
-
-            <div class="feature-item animate-on-scroll">
-                <div class="feature-icon">
-                    <i class="fas fa-calendar-check"></i>
-                </div>
-                <h3>Automated Booking</h3>
-                <p>Seamlessly schedule appointments and follow up with customers to ensure attendance.</p>
-            </div>
-
-            <div class="feature-item animate-on-scroll">
-                <div class="feature-icon">
-                    <i class="fas fa-chart-pie"></i>
-                </div>
-                <h3>Analytics & Insights</h3>
-                <p>Get detailed reports on call performance, customer satisfaction, and conversion rates.</p>
+                <p>Provide instant support resolution with Kai's deep understanding of your business, products, and customer service protocols.</p>
             </div>
         </div>
     </div>
 </section>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+<!-- How It Works Section -->
+<section class="section">
+    <div class="container">
+        <div class="section-header animate-on-scroll">
+            <h2>How Kai Works</h2>
+            <p>Sophisticated AI technology that delivers human-like conversation experiences</p>
+        </div>
+
+        <div class="features-grid animate-on-scroll">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <h3>Natural Conversations</h3>
+                <p>Kai engages in human-like conversations, understanding context, handling interruptions, and responding with emotional intelligence.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-calendar-check"></i>
+                </div>
+                <h3>Smart Scheduling</h3>
+                <p>Seamlessly schedule appointments, send reminders, and follow up with customers to ensure maximum attendance and engagement.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-chart-pie"></i>
+                </div>
+                <h3>Analytics & Insights</h3>
+                <p>Get detailed reports on call performance, customer satisfaction, conversion rates, and actionable insights to improve your strategy.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+/* Kai Page Specific Styles */
+.kai-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.demo-call-section {
+    position: relative;
+    z-index: 10;
+}
+
+.demo-call-card {
+    background: var(--bg-glass);
+    backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 3rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.demo-call-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 30% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 70% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.demo-call-card h2 {
+    color: var(--text-primary);
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.demo-call-card > p {
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.demo-call-form {
+    position: relative;
+    z-index: 1;
+}
+
+.form-step {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.input-group {
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    color: var(--text-primary);
+    font-size: 1rem;
+    transition: all var(--transition-speed) var(--transition-smooth);
+    box-sizing: border-box;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: var(--accent-purple);
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.input-group input::placeholder {
+    color: var(--text-secondary);
+}
+
+#otpInput {
+    font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
+    font-size: 1.5rem;
+    text-align: center;
+    letter-spacing: 0.5rem;
+    font-weight: 600;
+}
+
+.demo-button {
+    width: 100%;
+    padding: 1rem 2rem;
+    background: var(--accent-gradient);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-speed) var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+}
+
+.demo-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(139, 92, 246, 0.4);
+}
+
+.demo-button:active {
+    transform: translateY(0);
+}
+
+.demo-button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.link-button {
+    background: none;
+    border: none;
+    color: var(--accent-purple);
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+    padding: 0.5rem;
+    transition: all var(--transition-speed) var(--transition-smooth);
+}
+
+.link-button:hover {
+    color: var(--accent-blue);
+}
+
+.otp-header {
+    margin-bottom: 2rem;
+}
+
+.otp-header h3 {
+    color: var(--text-primary);
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+}
+
+.otp-header p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+#phoneDisplay {
+    color: var(--accent-purple);
+    font-weight: 600;
+}
+
+.success-message {
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.success-icon {
+    font-size: 3rem;
+    color: var(--accent-purple);
+    margin-bottom: 1.5rem;
+    animation: bounce 1s ease-in-out;
+}
+
+.success-message h3 {
+    color: var(--text-primary);
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+}
+
+.success-message p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+#successPhone {
+    color: var(--accent-purple);
+    font-weight: 600;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-20px);
+    }
+    60% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .kai-hero-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .demo-call-card {
+        padding: 2rem;
+    }
+    
+    .demo-call-card h2 {
+        font-size: 1.5rem;
+    }
+}
+</style>
+
 <script src="{{ site.baseurl }}/assets/js/typing-effect.js"></script>
 <script>
-    // Initialize typing effect
-    const phrases = [
-        'The Clever Way to Close',
-        'Smart AI, Seamless Sales',
-        '24x7 Customer Support'
-    ];
+// Initialize typing effect
+const phrases = [
+    'The Clever Way to Close',
+    'Smart AI, Seamless Sales',
+    '24x7 Customer Support',
+    'Natural Voice Intelligence'
+];
+
+// Initialize typing effect when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
     initTypingEffect('typed-text-kai', phrases);
-</script>
-<script>
-    // Initialize phone input
-    const phoneInput = document.querySelector("#phone");
-    const nameInput = document.querySelector("#name");
-    const iti = window.intlTelInput(phoneInput, {
-        utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
-        separateDialCode: true,
-        initialCountry: "auto",
-        geoIpLookup: function(callback) {
-            fetch("https://ipapi.co/json")
-                .then(res => res.json())
-                .then(data => callback(data.country_code))
-                .catch(() => callback("us"));
-        }
-    });
+});
 
-    // Add input restrictions for numeric input only
-    phoneInput.addEventListener('input', function(e) {
-        this.value = this.value.replace(/[^0-9]/g, '');
-        if (this.value.length > 10) {
-            this.value = this.value.slice(0, 10);
-        }
-    });
+// Demo call flow variables
+let currentStep = 1;
+let userPhoneNumber = '';
+let userFirstName = '';
+let userLastName = '';
 
-    function initiateCall() {
-        const phoneNumber = iti.getNumber();
-        const name = nameInput.value.trim();
-        if (phoneNumber && phoneNumber.length >= 10 && name) {
-            document.getElementById('loading').style.display = 'inline-block';
-            
-            // Make API call to initiate the call
-            fetch('https://europe-west2-karmaloop-ai.cloudfunctions.net/vapi-outbound-call', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    customer: {
-                        number: phoneNumber,
-                        name: name
-                    },
-                    phoneNumberId: "f11e7e1c-4d09-4e50-8cb0-d636441f7f28",
-                    name: "Sales call to " + name
-                })
+// Supabase edge function endpoint
+const DEMO_CALL_ENDPOINT = 'https://bxmwvpdlzkttabpxcajt.supabase.co/functions/v1/demo-call';
+
+// Step 1: Request OTP
+async function requestOTP() {
+    const firstName = document.getElementById('firstName').value.trim();
+    const lastName = document.getElementById('lastName').value.trim();
+    const phoneNumber = document.getElementById('phoneInput').value.trim();
+    
+    // Basic validation
+    if (!firstName || !lastName || !phoneNumber) {
+        alert('Please fill in all fields');
+        return;
+    }
+    
+    // Phone number validation (basic)
+    const phoneRegex = /^[\+]?[\s\-\(\)]?[\d\s\-\(\)]+$/;
+    if (!phoneRegex.test(phoneNumber) || phoneNumber.length < 10) {
+        alert('Please enter a valid phone number');
+        return;
+    }
+    
+    // Clean and format phone number
+    let cleanPhone = phoneNumber.replace(/\D/g, '');
+    if (cleanPhone.length === 10) {
+        cleanPhone = '+1' + cleanPhone; // Assume US if no country code
+    } else if (cleanPhone.length === 11 && cleanPhone.startsWith('1')) {
+        cleanPhone = '+' + cleanPhone;
+    } else if (!cleanPhone.startsWith('+')) {
+        cleanPhone = '+' + cleanPhone;
+    }
+    
+    // Store user data
+    userFirstName = firstName;
+    userLastName = lastName;
+    userPhoneNumber = cleanPhone;
+    
+    // Update UI
+    const btn = document.getElementById('requestOTPBtn');
+    btn.disabled = true;
+    btn.querySelector('.btn-text').style.display = 'none';
+    btn.querySelector('.btn-loading').style.display = 'inline';
+    
+    try {
+        const response = await fetch(DEMO_CALL_ENDPOINT, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                phoneNumber: userPhoneNumber,
+                firstName: userFirstName,
+                lastName: userLastName
             })
-            .then(response => {
-                document.getElementById('loading').style.display = 'none';
-                if (response.ok) {
-                    alert('Great! Kai will call you shortly at ' + phoneNumber);
-                } else {
-                    alert('Sorry, something went wrong. Please try again later.');
-                }
-            })
-            .catch(error => {
-                document.getElementById('loading').style.display = 'none';
-                alert('Sorry, something went wrong. Please try again later.');
-                console.error('Error:', error);
-            });
+        });
+        
+        const data = await response.json();
+        
+        if (data.success && data.otpSent) {
+            // Move to step 2
+            document.getElementById('step1').style.display = 'none';
+            document.getElementById('step2').style.display = 'block';
+            document.getElementById('phoneDisplay').textContent = userPhoneNumber;
+            document.getElementById('otpInput').focus();
+            currentStep = 2;
         } else {
-            alert('Please enter a valid 10-digit phone number and your name');
+            throw new Error(data.error || 'Failed to send OTP');
+        }
+        
+    } catch (error) {
+        console.error('Error requesting OTP:', error);
+        alert('Sorry, something went wrong. Please try again later.');
+    } finally {
+        // Reset button
+        btn.disabled = false;
+        btn.querySelector('.btn-text').style.display = 'inline';
+        btn.querySelector('.btn-loading').style.display = 'none';
+    }
+}
+
+// Step 2: Verify OTP and initiate call
+async function verifyAndCall() {
+    const otp = document.getElementById('otpInput').value.trim();
+    
+    if (!otp || otp.length !== 6 || !/^\d+$/.test(otp)) {
+        alert('Please enter the 6-digit code from your SMS');
+        return;
+    }
+    
+    // Update UI
+    const btn = document.getElementById('verifyCallBtn');
+    btn.disabled = true;
+    btn.querySelector('.btn-text').style.display = 'none';
+    btn.querySelector('.btn-loading').style.display = 'inline';
+    
+    try {
+        const response = await fetch(DEMO_CALL_ENDPOINT, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                phoneNumber: userPhoneNumber,
+                firstName: userFirstName,
+                lastName: userLastName,
+                otp: otp
+            })
+        });
+        
+        const data = await response.json();
+        
+        if (data.success) {
+            // Show success message
+            document.getElementById('step2').style.display = 'none';
+            document.getElementById('successStep').style.display = 'block';
+            document.getElementById('successPhone').textContent = userPhoneNumber;
+            currentStep = 3;
+        } else {
+            if (data.error.includes('Invalid OTP')) {
+                alert(`Invalid code. ${data.attemptsRemaining ? `${data.attemptsRemaining} attempts remaining.` : 'Please try again.'}`);
+            } else if (data.error.includes('expired')) {
+                alert('Code has expired. Please request a new one.');
+                goBackToStep1();
+            } else {
+                throw new Error(data.error);
+            }
+        }
+        
+    } catch (error) {
+        console.error('Error verifying OTP:', error);
+        alert('Sorry, something went wrong. Please try again.');
+    } finally {
+        // Reset button
+        btn.disabled = false;
+        btn.querySelector('.btn-text').style.display = 'inline';
+        btn.querySelector('.btn-loading').style.display = 'none';
+    }
+}
+
+// Go back to step 1
+function goBackToStep1() {
+    document.getElementById('step2').style.display = 'none';
+    document.getElementById('step1').style.display = 'block';
+    document.getElementById('otpInput').value = '';
+    currentStep = 1;
+}
+
+// Reset form
+function resetForm() {
+    document.getElementById('successStep').style.display = 'none';
+    document.getElementById('step1').style.display = 'block';
+    document.getElementById('firstName').value = '';
+    document.getElementById('lastName').value = '';
+    document.getElementById('phoneInput').value = '';
+    document.getElementById('otpInput').value = '';
+    currentStep = 1;
+    userPhoneNumber = '';
+    userFirstName = '';
+    userLastName = '';
+}
+
+// Handle Enter key presses
+document.addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+        if (currentStep === 1) {
+            requestOTP();
+        } else if (currentStep === 2) {
+            verifyAndCall();
         }
     }
+});
+
+// Auto-submit OTP when 6 digits entered
+document.getElementById('otpInput').addEventListener('input', function(e) {
+    const value = e.target.value.replace(/\D/g, '');
+    e.target.value = value;
+    
+    if (value.length === 6) {
+        setTimeout(() => verifyAndCall(), 500);
+    }
+});
+
+// Format phone number input
+document.getElementById('phoneInput').addEventListener('input', function(e) {
+    let value = e.target.value.replace(/\D/g, '');
+    
+    if (value.length > 0) {
+        if (value.length <= 3) {
+            value = `(${value}`;
+        } else if (value.length <= 6) {
+            value = `(${value.slice(0, 3)}) ${value.slice(3)}`;
+        } else {
+            value = `(${value.slice(0, 3)}) ${value.slice(3, 6)}-${value.slice(6, 10)}`;
+        }
+    }
+    
+    e.target.value = value;
+});
 </script>
