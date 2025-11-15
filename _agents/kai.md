@@ -18,7 +18,7 @@ keywords: "AI Voice Agent, Sales Calls, Support Calls, Customer Service, AI Phon
             </div>
             <div class="demo-call-section animate-on-scroll">
                 <div class="demo-call-card">
-                    <h2>📞 Experience Kai Live</h2>
+                    <h2>Experience Kai Live</h2>
                     <p>Get a personalized demo call and see how Kai can transform your business communication</p>
                     
                     <div class="demo-call-form" id="demoForm">
@@ -228,7 +228,7 @@ keywords: "AI Voice Agent, Sales Calls, Support Calls, Customer Service, AI Phon
     box-sizing: border-box;
 }
 
-.input-group input:focus {
+.input-group input:not(.iti input):focus {
     outline: none;
     border-color: var(--accent-purple);
     box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
@@ -244,62 +244,84 @@ keywords: "AI Voice Agent, Sales Calls, Support Calls, Customer Service, AI Phon
     position: relative;
 }
 
-.iti {
-    width: 100%;
+.phone-input-group .iti {
+    width: 100% !important;
     position: relative;
 }
 
-.iti__selected-flag {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid var(--glass-border);
-    border-radius: 12px 0 0 12px;
-    padding: 1rem 0.8rem;
-    transition: all var(--transition-speed) var(--transition-smooth);
+.phone-input-group .iti__selected-flag {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid var(--glass-border) !important;
+    border-radius: 12px 0 0 12px !important;
+    padding: 1rem 0.8rem !important;
+    transition: all var(--transition-speed) var(--transition-smooth) !important;
+    height: auto !important;
+    display: flex !important;
+    align-items: center !important;
 }
 
-.iti__selected-flag:hover {
-    background: rgba(255, 255, 255, 0.08);
+.phone-input-group .iti__selected-flag:hover {
+    background: rgba(255, 255, 255, 0.08) !important;
 }
 
-.iti__arrow {
-    border-top-color: var(--text-secondary);
+.phone-input-group .iti__arrow {
+    border-top-color: var(--text-secondary) !important;
+    margin-left: 6px !important;
 }
 
-.iti__country-list {
-    background: var(--bg-glass);
-    backdrop-filter: blur(var(--glass-blur));
-    border: 1px solid var(--glass-border);
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    z-index: 1000;
+.phone-input-group .iti__country-list {
+    background: var(--bg-glass) !important;
+    backdrop-filter: blur(var(--glass-blur)) !important;
+    border: 1px solid var(--glass-border) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+    z-index: 1000 !important;
+    max-height: 200px !important;
+    overflow-y: auto !important;
 }
 
-.iti__country {
-    color: var(--text-primary);
-    padding: 0.8rem 1rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+.phone-input-group .iti__country {
+    color: var(--text-primary) !important;
+    padding: 0.8rem 1rem !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
 }
 
-.iti__country:hover {
-    background: rgba(139, 92, 246, 0.1);
+.phone-input-group .iti__country:hover {
+    background: rgba(139, 92, 246, 0.1) !important;
 }
 
-.iti__country.iti__highlight {
-    background: rgba(139, 92, 246, 0.2);
+.phone-input-group .iti__country.iti__highlight {
+    background: rgba(139, 92, 246, 0.2) !important;
 }
 
-.iti__country-name {
-    color: var(--text-primary);
+.phone-input-group .iti__country-name {
+    color: var(--text-primary) !important;
 }
 
-.iti__dial-code {
-    color: var(--text-secondary);
+.phone-input-group .iti__dial-code {
+    color: var(--text-secondary) !important;
 }
 
-.iti input[type=tel] {
-    border-left: none;
-    border-radius: 0 12px 12px 0;
-    padding-left: 1rem;
+.phone-input-group .iti input[type=tel] {
+    border-left: none !important;
+    border-radius: 0 12px 12px 0 !important;
+    padding-left: 1rem !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid var(--glass-border) !important;
+    border-left: none !important;
+    color: var(--text-primary) !important;
+    height: auto !important;
+    padding: 1rem 1.5rem !important;
+    font-size: 1rem !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+.phone-input-group .iti input[type=tel]:focus {
+    outline: none !important;
+    border-color: var(--accent-purple) !important;
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1) !important;
+    background: rgba(255, 255, 255, 0.08) !important;
 }
 
 /* IntlTelInput Flag Images */
@@ -469,7 +491,11 @@ const phrases = [
 // Initialize typing effect when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
     initTypingEffect('typed-text-kai', phrases);
-    initPhoneInput();
+    
+    // Add a small delay to ensure intl-tel-input library is fully loaded
+    setTimeout(() => {
+        initPhoneInput();
+    }, 100);
 });
 
 // Demo call flow variables
@@ -485,24 +511,49 @@ const DEMO_CALL_ENDPOINT = 'https://bxmwvpdlzkttabpxcajt.supabase.co/functions/v
 // Initialize international phone input
 function initPhoneInput() {
     const phoneInput = document.getElementById('phoneInput');
-    phoneInputInstance = window.intlTelInput(phoneInput, {
-        utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
-        separateDialCode: false,
-        initialCountry: "auto",
-        preferredCountries: ["us", "gb", "ca", "au"],
-        geoIpLookup: function(callback) {
-            fetch("https://ipapi.co/json")
-                .then(res => res.json())
-                .then(data => callback(data.country_code))
-                .catch(() => callback("us"));
-        }
-    });
+    if (!phoneInput) {
+        console.error('Phone input element not found');
+        return;
+    }
     
-    // Add numeric input restriction
-    phoneInput.addEventListener('input', function(e) {
-        // Allow only numbers, plus, minus, parentheses, and spaces
-        this.value = this.value.replace(/[^0-9\+\-\(\)\s]/g, '');
-    });
+    // Check if intl-tel-input is loaded
+    if (!window.intlTelInput) {
+        console.error('intl-tel-input library not loaded');
+        return;
+    }
+    
+    try {
+        phoneInputInstance = window.intlTelInput(phoneInput, {
+            utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+            separateDialCode: false,
+            initialCountry: "auto",
+            preferredCountries: ["us", "gb", "ca", "au"],
+            autoPlaceholder: "aggressive",
+            geoIpLookup: function(callback) {
+                fetch("https://ipapi.co/json")
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log('Detected country:', data.country_code);
+                        callback(data.country_code);
+                    })
+                    .catch(() => {
+                        console.log('Geolocation failed, defaulting to US');
+                        callback("us");
+                    });
+            }
+        });
+        
+        console.log('Phone input initialized successfully');
+        
+        // Add numeric input restriction
+        phoneInput.addEventListener('input', function(e) {
+            // Allow only numbers, plus, minus, parentheses, and spaces
+            this.value = this.value.replace(/[^0-9\+\-\(\)\s]/g, '');
+        });
+        
+    } catch (error) {
+        console.error('Error initializing phone input:', error);
+    }
 }
 
 // Step 1: Request OTP
