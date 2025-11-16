@@ -6,6 +6,7 @@ keywords: "AI Voice Agent, Sales Calls, Support Calls, Customer Service, AI Phon
 ---
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@17.0.8/build/css/intlTelInput.css">
 
 <!-- Hero Section -->
 <section class="hero-section">
@@ -246,27 +247,49 @@ keywords: "AI Voice Agent, Sales Calls, Support Calls, Customer Service, AI Phon
 
 .phone-input-group .iti {
     width: 100% !important;
-    position: relative;
+    position: relative !important;
+    display: block !important;
 }
 
 .phone-input-group .iti__selected-flag {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    z-index: 2 !important;
     background: rgba(255, 255, 255, 0.05) !important;
     border: 1px solid var(--glass-border) !important;
     border-radius: 12px 0 0 12px !important;
-    padding: 1rem 0.8rem !important;
+    border-right: none !important;
+    padding: 0 0.8rem !important;
     transition: all var(--transition-speed) var(--transition-smooth) !important;
-    height: auto !important;
+    height: 56px !important;
+    min-height: 56px !important;
     display: flex !important;
     align-items: center !important;
+    justify-content: center !important;
+    width: 60px !important;
+    min-width: 60px !important;
+    max-width: 60px !important;
+    box-sizing: border-box !important;
 }
 
 .phone-input-group .iti__selected-flag:hover {
     background: rgba(255, 255, 255, 0.08) !important;
 }
 
+.phone-input-group .iti__flag-container {
+    height: 56px !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
 .phone-input-group .iti__arrow {
     border-top-color: var(--text-secondary) !important;
     margin-left: 6px !important;
+    border-top: 5px solid var(--text-secondary) !important;
+    border-left: 3px solid transparent !important;
+    border-right: 3px solid transparent !important;
+    border-bottom: none !important;
 }
 
 .phone-input-group .iti__country-list {
@@ -278,6 +301,7 @@ keywords: "AI Voice Agent, Sales Calls, Support Calls, Customer Service, AI Phon
     z-index: 1000 !important;
     max-height: 200px !important;
     overflow-y: auto !important;
+    margin-top: 2px !important;
 }
 
 .phone-input-group .iti__country {
@@ -303,24 +327,34 @@ keywords: "AI Voice Agent, Sales Calls, Support Calls, Customer Service, AI Phon
 }
 
 .phone-input-group .iti input[type=tel] {
-    border-left: none !important;
-    border-radius: 0 12px 12px 0 !important;
-    padding-left: 1rem !important;
     background: rgba(255, 255, 255, 0.05) !important;
     border: 1px solid var(--glass-border) !important;
-    border-left: none !important;
+    border-radius: 0 12px 12px 0 !important;
     color: var(--text-primary) !important;
-    height: auto !important;
-    padding: 1rem 1.5rem !important;
+    height: 56px !important;
+    min-height: 56px !important;
+    padding: 0 1.5rem !important;
+    padding-left: 70px !important;
     font-size: 1rem !important;
     width: 100% !important;
     box-sizing: border-box !important;
+    margin: 0 !important;
 }
 
 .phone-input-group .iti input[type=tel]:focus {
     outline: none !important;
     border-color: var(--accent-purple) !important;
     box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1) !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+}
+
+.phone-input-group .iti input[type=tel]::placeholder {
+    color: var(--text-secondary) !important;
+}
+
+/* Focus state for the entire phone input */
+.phone-input-group .iti:focus-within .iti__selected-flag {
+    border-color: var(--accent-purple) !important;
     background: rgba(255, 255, 255, 0.08) !important;
 }
 
@@ -478,6 +512,7 @@ keywords: "AI Voice Agent, Sales Calls, Support Calls, Customer Service, AI Phon
 </style>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@17.0.8/build/js/intlTelInput.min.js"></script>
 <script src="{{ site.baseurl }}/assets/js/typing-effect.js"></script>
 <script>
 // Initialize typing effect
@@ -490,15 +525,75 @@ const phrases = [
 
 // Initialize typing effect when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM loaded');
     initTypingEffect('typed-text-kai', phrases);
     
-    // Add a small delay to ensure intl-tel-input library is fully loaded
-    setTimeout(() => {
-        initPhoneInput();
-    }, 100);
+    // Try multiple times to ensure library loads
+    let attempts = 0;
+    const maxAttempts = 10;
+    
+    function tryInitPhone() {
+        attempts++;
+        console.log(`Phone init attempt ${attempts}`);
+        
+        if (window.intlTelInput) {
+            initPhoneInput();
+        } else if (attempts < maxAttempts) {
+            console.log('Library not ready, retrying...');
+            setTimeout(tryInitPhone, 200 * attempts); // Exponential backoff
+        } else {
+            console.error('Failed to load intl-tel-input after all attempts');
+            // Set fallback placeholder
+            const phoneInput = document.getElementById('phoneInput');
+            if (phoneInput) {
+                phoneInput.placeholder = 'Phone Number (e.g. +1 234 567 8900)';
+            }
+        }
+    }
+    
+    // Start trying immediately
+    tryInitPhone();
 });
 
-// Demo call flow variables
+// Also try when window loads
+window.addEventListener('load', function() {
+    console.log('Window loaded');
+    if (!phoneInputInstance) {
+        setTimeout(() => {
+            initPhoneInput();
+        }, 1000);
+    }
+});
+
+// Debug function to check what's happening
+function debugPhone() {
+    console.log('=== Phone Input Debug ===');
+    console.log('window.intlTelInput:', !!window.intlTelInput);
+    console.log('phoneInputInstance:', phoneInputInstance);
+    
+    const phoneInput = document.getElementById('phoneInput');
+    console.log('Phone input element:', phoneInput);
+    console.log('Phone input value:', phoneInput ? phoneInput.value : 'N/A');
+    console.log('Phone input classes:', phoneInput ? phoneInput.className : 'N/A');
+    console.log('Parent element classes:', phoneInput ? phoneInput.parentElement.className : 'N/A');
+    
+    // Check if the intl-tel-input wrapper exists
+    const itiWrapper = document.querySelector('.iti');
+    console.log('ITI wrapper found:', !!itiWrapper);
+    
+    if (itiWrapper) {
+        console.log('ITI wrapper classes:', itiWrapper.className);
+        console.log('ITI wrapper children:', itiWrapper.children.length);
+    }
+    
+    // Try to re-initialize
+    if (window.intlTelInput && phoneInput && !phoneInputInstance) {
+        console.log('Attempting manual initialization...');
+        initPhoneInput();
+    }
+    
+    alert('Debug info logged to console. Press F12 to see details.');
+}
 let currentStep = 1;
 let userPhoneNumber = '';
 let userFirstName = '';
@@ -506,53 +601,89 @@ let userLastName = '';
 let phoneInputInstance = null;
 
 // Supabase edge function endpoint
-const DEMO_CALL_ENDPOINT = 'https://bxmwvpdlzkttabpxcajt.supabase.co/functions/v1/demo-call';
+const DEMO_CALL_ENDPOINT = 'https://ixeqedgrusamxwsvwoho.supabase.co/functions/v1/demo-call';
 
 // Initialize international phone input
 function initPhoneInput() {
+    console.log('initPhoneInput called');
+    
     const phoneInput = document.getElementById('phoneInput');
     if (!phoneInput) {
         console.error('Phone input element not found');
         return;
     }
     
+    console.log('Phone input found:', phoneInput);
+    
     // Check if intl-tel-input is loaded
     if (!window.intlTelInput) {
-        console.error('intl-tel-input library not loaded');
+        console.error('intl-tel-input library not loaded, attempting to load...');
+        
+        // Try to reload the script
+        const script = document.createElement('script');
+        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js';
+        script.onload = function() {
+            console.log('intl-tel-input loaded via dynamic script, retrying initialization');
+            setTimeout(() => initPhoneInput(), 200);
+        };
+        script.onerror = function() {
+            console.error('Failed to load intl-tel-input script');
+        };
+        document.head.appendChild(script);
         return;
     }
     
+    console.log('intl-tel-input library found, initializing...');
+    
     try {
+        // Destroy existing instance if it exists
+        if (phoneInputInstance && phoneInputInstance.destroy) {
+            phoneInputInstance.destroy();
+        }
+        
         phoneInputInstance = window.intlTelInput(phoneInput, {
             utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
             separateDialCode: false,
-            initialCountry: "auto",
+            initialCountry: "us", // Start with US as default
             preferredCountries: ["us", "gb", "ca", "au"],
             autoPlaceholder: "aggressive",
+            formatOnDisplay: true,
+            nationalMode: true,
             geoIpLookup: function(callback) {
+                console.log('Attempting geolocation lookup...');
                 fetch("https://ipapi.co/json")
                     .then(res => res.json())
                     .then(data => {
                         console.log('Detected country:', data.country_code);
-                        callback(data.country_code);
+                        callback(data.country_code.toLowerCase());
                     })
-                    .catch(() => {
-                        console.log('Geolocation failed, defaulting to US');
+                    .catch((error) => {
+                        console.log('Geolocation failed:', error, 'defaulting to US');
                         callback("us");
                     });
             }
         });
         
-        console.log('Phone input initialized successfully');
+        console.log('Phone input initialized successfully:', phoneInputInstance);
+        
+        // Force re-render
+        setTimeout(() => {
+            if (phoneInputInstance && phoneInputInstance.setCountry) {
+                phoneInputInstance.setCountry('us');
+                console.log('Country set to US');
+            }
+        }, 500);
         
         // Add numeric input restriction
         phoneInput.addEventListener('input', function(e) {
-            // Allow only numbers, plus, minus, parentheses, and spaces
-            this.value = this.value.replace(/[^0-9\+\-\(\)\s]/g, '');
+            console.log('Phone input changed:', e.target.value);
         });
         
     } catch (error) {
         console.error('Error initializing phone input:', error);
+        
+        // Fallback: just show a regular input
+        phoneInput.placeholder = 'Enter your phone number (e.g. +1 234 567 8900)';
     }
 }
 
@@ -561,13 +692,46 @@ async function requestOTP() {
     const firstName = document.getElementById('firstName').value.trim();
     const lastName = document.getElementById('lastName').value.trim();
     
-    // Get the full international phone number from intl-tel-input
-    if (!phoneInputInstance) {
-        alert('Phone input not initialized. Please refresh the page.');
-        return;
-    }
+    let phoneNumber;
     
-    const phoneNumber = phoneInputInstance.getNumber();
+    // Try to get phone number from intl-tel-input if available
+    if (phoneInputInstance && phoneInputInstance.getNumber) {
+        try {
+            phoneNumber = phoneInputInstance.getNumber();
+            console.log('Got phone from intl-tel-input:', phoneNumber);
+            
+            // Validate using intl-tel-input if possible
+            if (phoneInputInstance.isValidNumber && !phoneInputInstance.isValidNumber()) {
+                alert('Please enter a valid phone number');
+                return;
+            }
+        } catch (error) {
+            console.error('Error getting phone from intl-tel-input:', error);
+            phoneNumber = document.getElementById('phoneInput').value.trim();
+        }
+    } else {
+        // Fallback: get raw value and do basic validation
+        phoneNumber = document.getElementById('phoneInput').value.trim();
+        console.log('Got phone from raw input:', phoneNumber);
+        
+        // Basic phone number validation for fallback
+        const cleanPhone = phoneNumber.replace(/\D/g, '');
+        if (cleanPhone.length < 10) {
+            alert('Please enter a valid phone number with at least 10 digits');
+            return;
+        }
+        
+        // Format for international use
+        if (!phoneNumber.startsWith('+')) {
+            if (cleanPhone.length === 10) {
+                phoneNumber = '+1' + cleanPhone; // Assume US
+            } else if (cleanPhone.length === 11 && cleanPhone.startsWith('1')) {
+                phoneNumber = '+' + cleanPhone;
+            } else {
+                phoneNumber = '+' + cleanPhone;
+            }
+        }
+    }
     
     // Basic validation
     if (!firstName || !lastName) {
@@ -575,11 +739,12 @@ async function requestOTP() {
         return;
     }
     
-    // Validate phone number using intl-tel-input validation
-    if (!phoneInputInstance.isValidNumber()) {
+    if (!phoneNumber || phoneNumber.length < 10) {
         alert('Please enter a valid phone number');
         return;
     }
+    
+    console.log('Final phone number:', phoneNumber);
     
     // Store user data
     userFirstName = firstName;
