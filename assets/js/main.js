@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
         new TypingEffect(typedElement, [
             'Let us do the talking',
             'While you do the real work',
-            'The Uber Eats for Communications'
+            'The Shopify for Communications'
         ], {
             typeSpeed: 80,
             deleteSpeed: 40,

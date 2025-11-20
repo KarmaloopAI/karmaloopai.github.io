@@ -7,19 +7,20 @@ typing_effect: true
 ---
 
 <!-- Hero Section -->
-<section class="hero-section">
+<section class="hero-section hero-bg">
     <div class="container">
         <div class="hero-content animate-on-scroll">
-            <h1>Let AI Orchestrate Your Communication Strategy</h1>
+            <h1>Let AI Handle
+            Your Communications</h1>
             <p class="subtitle">
                 <span class="typed-text"></span>
             </p>
             <p style="font-size: 1.2rem; margin-bottom: 3rem;">
                 From first contact to closed deal, Kai makes every conversation count. 
-                The Uber Eats for communications - we handle the talking, you handle the results.
+                The Shopify for communications - we handle the talking, you handle the results.
             </p>
             <div class="hero-buttons">
-                <a href="#kai-showcase" class="button">See Kai in Action</a>
+                <a href="/kai/" class="button">See Kai in Action</a>
                 <a href="{{ site.baseurl }}/contact/" class="button secondary">Book a Demo</a>
             </div>
         </div>
